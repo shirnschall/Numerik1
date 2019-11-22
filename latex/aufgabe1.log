@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.6)  22 NOV 2019 01:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.6)  22 NOV 2019 01:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1068,7 +1068,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
-LaTeX Warning: Empty bibliography on input line 207.
+LaTeX Warning: Empty bibliography on input line 212.
 
 (./aufgabe1.lof)
 \tf@lof=\write7
@@ -1084,21 +1084,23 @@ Package logreq Info: Writing requests to 'aufgabe1.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17930 strings out of 492649
- 307505 string characters out of 6129622
+ 17935 strings out of 492649
+ 307562 string characters out of 6129622
  841191 words of memory out of 5000000
- 21549 multiletter control sequences out of 15000+600000
- 14443 words of font info for 40 fonts, out of 8000000 for 9000
+ 21552 multiletter control sequences out of 15000+600000
+ 15808 words of font info for 42 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  45i,11n,51p,9087b,2180s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></
 usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on aufgabe1.pdf (3 pages, 39075 bytes).
+r/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb>
+Output written on aufgabe1.pdf (3 pages, 47390 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
- 18 compressed objects within 1 object stream
+ 35 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
