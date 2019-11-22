@@ -1,0 +1,3 @@
+/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/cmake-build-debug/CMakeFiles/aufgabe_d.dir
