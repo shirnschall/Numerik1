@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f30d775-c059-40ab-8341-feaa0f71d08c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="5f30d775-c059-40ab-8341-feaa0f71d08c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +20,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+<<<<<<< HEAD
+=======
+  <component name="FUSProjectUsageTrigger">
+    <session id="-399020981">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cpp" value="398" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="ObjectiveC" value="398" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+>>>>>>> 51052c3ab29d500c84ab8203120f8000362267b5
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -108,16 +130,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574445656859</updated>
+<<<<<<< HEAD
       <workItem from="1574445658231" duration="2375000" />
       <workItem from="1574458248141" duration="32000" />
+=======
+      <workItem from="1574445658231" duration="2536000" />
+>>>>>>> 51052c3ab29d500c84ab8203120f8000362267b5
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="2407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1536" height="864" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="2536000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+>>>>>>> 51052c3ab29d500c84ab8203120f8000362267b5
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24457994" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
