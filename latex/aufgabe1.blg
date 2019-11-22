@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.13
-[0] Config.pm:307> INFO - Logfile is 'aufgabe1.blg'
-[33] biber-MSWIN64:315> INFO - === 
-[50] Biber.pm:375> INFO - Reading 'aufgabe1.bcf'
-[146] Biber.pm:905> INFO - Found 0 citekeys in bib section 0
-[152] Utils.pm:300> WARN - The file 'aufgabe1.bcf' does not contain any citations!
-[161] bbl.pm:648> INFO - Writing 'aufgabe1.bbl' with encoding 'UTF-8'
-[161] bbl.pm:751> INFO - Output to aufgabe1.bbl
-[162] Biber.pm:110> INFO - WARNINGS: 1
