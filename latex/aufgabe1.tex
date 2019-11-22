@@ -72,7 +72,7 @@ date=short                % Datumsformat
 \renewcommand{\footrulewidth}{0.2pt}
 
 
-\fancypagestyle{firststyle}
+\fancypagestyle{sh}
 {
 	\fancyhf{}
 	\rhead{}
@@ -83,6 +83,32 @@ date=short                % Datumsformat
 	\cfoot{}
 	\rfoot{\thepage}
 }
+
+\fancypagestyle{rd}
+{
+	\fancyhf{}
+	\rhead{}
+	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
+	\chead{}
+	\lhead{}
+	\lfoot{ Rafael Dorigo}
+	\cfoot{}
+	\rfoot{\thepage}
+}
+
+\fancypagestyle{general}
+{
+	\fancyhf{}
+	\rhead{}
+	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
+	\chead{}
+	\lhead{}
+	\lfoot{ Rafael Dorigo, Sebastian Hirnschall}
+	\cfoot{}
+	\rfoot{\thepage}
+}
+
+
 
 
 %listings settings
@@ -198,9 +224,15 @@ date=short                % Datumsformat
 
 \begin{document}
 	\tableofcontents
-	\thispagestyle{firststyle}
-	
+	\thispagestyle{general}
 	\newpage
+	\thispagestyle{rd}
+	\section{a}
+	\newpage
+	\thispagestyle{rd}
+	\section{b}
+	\newpage
+	\thispagestyle{sh}
 	\section{c}
 	\begin{mytheorem}
 		satz 4.23 oder so
@@ -211,9 +243,7 @@ date=short                % Datumsformat
 	\newpage
 	\printbibliography
 	\listoffigures
-	\thispagestyle{firststyle}
 	\listoftables
-	\thispagestyle{firststyle}
 	
 \end{document}
 
