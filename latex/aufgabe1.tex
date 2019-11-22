@@ -1,0 +1,214 @@
+\documentclass[12pt,a4paper]{scrartcl}
+
+\author{Sebastian Hirnschall}
+%% (C) Hirnschall Sebastian 2016 
+\date{\today}
+
+
+\usepackage[
+backend=biber,
+style=authoryear-icomp,    % Zitierstil
+isbn=false,                % ISBN nicht anzeigen, gleiches geht mit nahezu allen anderen Feldern
+pagetracker=true,          % ebd. bei wiederholten Angaben (false=ausgeschaltet, page=Seite, spread=Doppelseite, true=automatisch)
+maxbibnames=50,            % maximale Namen, die im Literaturverzeichnis angezeigt werden (ich wollte alle)
+maxcitenames=3,            % maximale Namen, die im Text angezeigt werden, ab 4 wird u.a. nach den ersten Autor angezeigt
+autocite=inline,           % regelt Aussehen für \autocite (inline=\parancite)
+block=space,               % kleiner horizontaler Platz zwischen den Feldern
+backref=true,              % Seiten anzeigen, auf denen die Referenz vorkommt
+backrefstyle=three+,       % fasst Seiten zusammen, z.B. S. 2f, 6ff, 7-10
+date=short                % Datumsformat
+]{biblatex}
+
+\addbibresource{refs.bib}
+
+\usepackage{longtable}
+%\usepackage{hyperref}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\usepackage[ngerman]{cleveref} %referenzen fur Abbildungen
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{esdiff}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{geometry}% http://ctan.org/pkg/geometry
+\usepackage{amsthm}
+\usepackage{tocloft}
+\usepackage{framed}
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{textcomp}
+%\usepackage[dvipsnames]{xcolor}
+
+
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+
+\usepackage{fancyvrb}
+
+
+%\pagestyle{headings}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+%\pagestyle{headings}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%
+\rhead{ \rightmark}
+%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
+\chead{}
+\lhead{}
+%%
+\lfoot{Sebastian Hirnschall}
+\cfoot{}
+\rfoot{\thepage}
+%%
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.2pt}
+
+
+\fancypagestyle{firststyle}
+{
+	\fancyhf{}
+	\rhead{}
+	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
+	\chead{}
+	\lhead{}
+	\lfoot{ Sebastian Hirnschall}
+	\cfoot{}
+	\rfoot{\thepage}
+}
+
+
+%listings settings
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{BackgroundGray}{rgb}{0.9,0.9,0.9}
+
+\lstset{ %
+	backgroundcolor=\color{BackgroundGray},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={...},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=single,	                   % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=C,                 	   % the language of the code
+	otherkeywords={*,...},           % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{mygray},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mymauve},     % string literal style
+	tabsize=2,	                   % sets default tabsize to 2 spaces
+	title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+	emph={int,unsigned,long,vector,char,string},
+	emphstyle={\color{ForestGreen}}
+}
+
+%italic quotes
+\newenvironment{italicquotes}
+{\begin{quote}\itshape}
+	{\end{quote}}
+
+
+%tableofcontents font
+%\renewcommand{\cftchapfont}{\scshape}
+\renewcommand{\cftsecfont}{\bfseries}
+\addtokomafont{disposition}{\rmfamily}
+
+\newcommand{\spar}{\par\vspace{10pt}\noindent}
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+
+
+\usepackage{twoopt}
+\newcommandtwoopt{\img}[4][0.5cm][0.7]{
+	\begin{figure}[!h]
+		\vspace{#1}
+		\centering
+		\includegraphics[width=#2\textwidth]{#3}
+		\caption{#4} %\footnotemark}
+		\label{fig:#3}
+	\end{figure}
+	%\footnotetext{#5}
+}
+
+
+
+
+\numberwithin{equation}{section} 
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+
+
+
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{corollary}[theorem]{Corollary}
+
+\newcounter{myalgctr}
+
+\newenvironment{mydef}{%      define a custom environment
+	\bigskip\noindent%         create a vertical offset to previous material
+	\refstepcounter{myalgctr}% increment the environment's counter
+	\textsc{\textbf{Definition} \themyalgctr}% or \textbf, \textit, ...
+	\newline
+}{\par\bigskip}  %          create a vertical offset to following material
+\numberwithin{myalgctr}{section}
+
+\crefname{myalgctr}{Definition}{Definitionen}
+
+\newcounter{mytheoremctr}
+
+\newenvironment{mytheorem}{%      define a custom environment
+	\bigskip\noindent%         create a vertical offset to previous material
+	\refstepcounter{mytheoremctr}% increment the environment's counter
+	\textsc{\textbf{Theorem} \themytheoremctr}% or \textbf, \textit, ...
+	\newline
+}{\par\bigskip}  %          create a vertical offset to following material
+\numberwithin{mytheoremctr}{section}
+
+\crefname{mytheoremctr}{Theorem}{Theorem}
+
+\newenvironment{myproof}{%      define a custom environment
+	\bigskip\noindent%         create a vertical offset to previous material
+	\textsc{\textbf{Beweis}}% or \textbf, \textit, ...
+	\indent
+}{\par\bigskip}  %          create a vertical offset to following material
+
+
+\newcommand{\mpar}[1]{\paragraph*{#1}\mbox{}\par}
+
+\begin{document}
+	\tableofcontents
+	\thispagestyle{firststyle}
+	
+	\newpage
+	\section{Einleitung}
+	
+	\newpage
+	\printbibliography
+	\listoffigures
+	\thispagestyle{firststyle}
+	\listoftables
+	\thispagestyle{firststyle}
+	
+\end{document}
+
