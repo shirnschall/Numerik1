@@ -44,3 +44,6 @@
 *.synctex.gz
 *.toc
 
+#mac
+.DS_Store
+
