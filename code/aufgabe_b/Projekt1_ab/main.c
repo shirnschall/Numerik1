@@ -1,18 +1,17 @@
-#include <iostream>
-#include <cmath>
 #include <stdio.h>
+#include <stdlib.h>
 
 double g(double);
 double f(double);
 
+int main(){
 
-int main() {
+    int i;
     printf("x\ty\tfunktion\n");
-    for(int i = -500; i<=500 ; i+=1) {
+    for(i=0; i<=255 ; i++) {
         printf("%f\t%f\t%s\n",(double) i / 100,g((double) i / 100),"sin(x)/x");
         printf("%f\t%f\t%s\n",(double) i / 100,f((double) i / 100),"x");
     }
-
 
     return 0;
 }
@@ -20,7 +19,7 @@ int main() {
 double g(double x){
     //sin(x)/x      sonst
     //1             x=0
-    return std::abs(x)>10e-7?sin(x)/x : (double)1;
+    return abs(x)>10e-14?sin(x)/x : (double)1;
 }
 
 double f(double x){
