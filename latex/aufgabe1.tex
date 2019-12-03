@@ -19,7 +19,7 @@ backrefstyle=three+,       % fasst Seiten zusammen, z.B. S. 2f, 6ff, 7-10
 date=short                % Datumsformat
 ]{biblatex}
 
-\addbibresource{refs.bib}
+\addbibresource{./refs.bib}
 
 \usepackage{longtable}
 %\usepackage{hyperref}
@@ -192,7 +192,7 @@ date=short                % Datumsformat
 \newcounter{myalgctr}
 
 \newenvironment{mydef}{%      define a custom environment
-	\bigskip\noindent%         create a vertical offset to previous material
+	\par\noindent%         create a vertical offset to previous material
 	\refstepcounter{myalgctr}% increment the environment's counter
 	\textsc{\textbf{Definition} \themyalgctr}% or \textbf, \textit, ...
 	\newline
@@ -208,9 +208,9 @@ date=short                % Datumsformat
 	\refstepcounter{mylemmactr}% increment the environment's counter
 	\refstepcounter{mykorollarctr}
 	\refstepcounter{mytheoremctr}
-	\bigskip\noindent%         create a vertical offset to previous material
+	\par \noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Satz} \themytheoremctr}% or \textbf, \textit, ...
-	\newline
+	\newline\noindent
 }{\par\bigskip}  %          create a vertical offset to following material
 \numberwithin{mytheoremctr}{section}
 
@@ -223,9 +223,9 @@ date=short                % Datumsformat
 	\refstepcounter{mylemmactr}% increment the environment's counter
 	\refstepcounter{mytheoremctr}
 	\refstepcounter{mykorollarctr}
-	\bigskip\noindent%         create a vertical offset to previous material
+	\par\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Korollar} \themykorollarctr}% or \textbf, \textit, ...
-	\newline
+	\newline\noindent
 }{\par\bigskip}  %          create a vertical offset to following material
 \numberwithin{mykorollarctr}{section}
 
@@ -238,9 +238,9 @@ date=short                % Datumsformat
 	\refstepcounter{mykorollarctr}
 	\refstepcounter{mytheoremctr}
 	\refstepcounter{mylemmactr}% increment the environment's counter
-	\bigskip\noindent%         create a vertical offset to previous material
+	\par\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Lemma} \themylemmactr}% or \textbf, \textit, ...
-	\newline
+	\newline\noindent
 }{\par\bigskip}  %          create a vertical offset to following material
 \numberwithin{mylemmactr}{section}
 
@@ -284,17 +284,34 @@ date=short                % Datumsformat
 	\newpage
 	\thispagestyle{rd}
 	\section{b}
+	
+	
+	
+	
+	
+	%sebastians teil
 	\newpage
 	\thispagestyle{sh}
 	\section{c}
+	Zun\"achst  sei Bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
-		content...
+		Es existiert eine eindeutig bestimmte Folge $(q_n)$ von Polynomen der Form
+		\begin{align*}
+		q_0(x)&\coloneqq 1\\
+			q_n(x)&\coloneqq x^n+r_{n-1}(x),\quad x\in [a,b]
+		\end{align*}
+		mit $r_{n-1}\in \prod_{n-1}$, die die Orthogonalith\"atsbeziehungen  $(q_n,q_m)_w=0,\; n\neq m $ erf\"ullen.
 	\end{mykorollar}
+
+	\noindent und
 	\begin{mylemma}
-		content...
+		Jedes der orthogonalen Polynome $q_n\in \prod_n$, aus \cref{4.15} besitzt $n$ einfache Nullstellen in $(a,b)$.
 	\end{mylemma}
+
+	\noindent Woraus sich dann folgender Satz ergibt:
 	\begin{mytheorem}
-		Die Orthogonalpolynome $q_n \in \prod_n$ aus \cref{4.15} sind eindeutig duch die folgenden 3 Terme gegeben
+		%Korollar 4.15  \autocite[45]{skript}
+		Die Orthogonalpolynome $q_n \in \prod_n$ aus \cref{4.15} sind eindeutig durch die folgenden 3 Terme gegeben
 		\begin{align*}
 			q_0(x) &\coloneqq 1\\
 			q_1(x) &\coloneqq (x-\beta_0) q_0 = x-\beta_0 \\
