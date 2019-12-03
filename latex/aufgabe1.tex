@@ -221,8 +221,8 @@ date=short                % Datumsformat
 
 \newenvironment{mykorollar}{%      define a custom environment
 	\refstepcounter{mylemmactr}% increment the environment's counter
-	\refstepcounter{mykorollarctr}
 	\refstepcounter{mytheoremctr}
+	\refstepcounter{mykorollarctr}
 	\bigskip\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Korollar} \themykorollarctr}% or \textbf, \textit, ...
 	\newline
@@ -235,9 +235,9 @@ date=short                % Datumsformat
 \newcounter{mylemmactr}
 
 \newenvironment{mylemma}{%      define a custom environment
-	\refstepcounter{mylemmactr}% increment the environment's counter
 	\refstepcounter{mykorollarctr}
 	\refstepcounter{mytheoremctr}
+	\refstepcounter{mylemmactr}% increment the environment's counter
 	\bigskip\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Lemma} \themylemmactr}% or \textbf, \textit, ...
 	\newline
@@ -254,6 +254,8 @@ date=short                % Datumsformat
 
 
 \newcommand{\mpar}[1]{\paragraph*{#1}\mbox{}\par}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
 
 \begin{document}
 	\tableofcontents
@@ -285,17 +287,44 @@ date=short                % Datumsformat
 	\newpage
 	\thispagestyle{sh}
 	\section{c}
-	\begin{mykorollar}
+	\begin{mykorollar}\label{4.15}
 		content...
 	\end{mykorollar}
 	\begin{mylemma}
 		content...
 	\end{mylemma}
 	\begin{mytheorem}
-		Die Orthogonalpolynome $q_n \in \prod_n$
+		Die Orthogonalpolynome $q_n \in \prod_n$ aus \cref{4.15} sind eindeutig duch die folgenden 3 Terme gegeben
+		\begin{align*}
+			q_0(x) &\coloneqq 1\\
+			q_1(x) &\coloneqq (x-\beta_0) q_0 = x-\beta_0 \\
+			 q_{n+1}(x) &\coloneqq (x-\beta_n)q_n(x)-\gamma^2_n q_{n-1}(x) \quad \text{f\"ur}  \quad n\geq 1
+		\end{align*}
+		mit
+		\begin{align*}
+			\beta_n\coloneqq \frac{(xq_n,q_n)_w}{\norm{q_n}^2_w} \quad \text{und} \quad 
+			\gamma_n\coloneqq \frac{\norm{q_n}_w}{\norm{q_{n-1}}_w}
+		\end{align*}
+		Weiter sind die Eigenwerte der Matrix
+		\begin{align*}
+		T\coloneqq 
+			\begin{pmatrix}
+			\beta_0 		 & 	\gamma_1 	&  						& &\\
+			\gamma_1 	 & \beta_1 			& \gamma_2	  & & \\
+			 				    	&  \gamma_2   & \ddots 		      & \ddots &\\
+			 				    	&					& \ddots &	\beta_{n-1} & \gamma_n\\
+			 				    	&	&	&\gamma_n &\beta_n&\\
+			\end{pmatrix}
+			\in \mathbb{R}^{(n+1)\times (n+1)}
+		\end{align*}
+		die Nullstellen $x_0,\dots ,x_n$ des $(n+1)$-ten Orthogonalpolynoms $q_{n+1}$ und die zugeh\"origen Gewichte der Gau\ss-Quadratur sind gegeben durch
+		\begin{align*}
+			\alpha_j \coloneqq \left(\frac{(v_j)_1}{\norm{v_j}_2}\right)^2 \int_{a}^{b} w(x)dx,\quad j=0,\dots,n
+		\end{align*}
+		wobei $(v_j)_1$ die 1.Komponente eines Eigenvektors $v_j \in \mathbb{R}^{n+1}\setminus \{0\}$ zum eigenwert $x_j$ ist.
 	\end{mytheorem}
 	\begin{myproof}
-	beweis zu satz 4.23 werden wir auch vom g\"oth abschreiben haha
+		
 	\end{myproof}
 	\newpage
 	\printbibliography
