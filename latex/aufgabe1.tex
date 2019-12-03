@@ -201,17 +201,50 @@ date=short                % Datumsformat
 
 \crefname{myalgctr}{Definition}{Definitionen}
 
+%theorem
 \newcounter{mytheoremctr}
 
 \newenvironment{mytheorem}{%      define a custom environment
+	\refstepcounter{mylemmactr}% increment the environment's counter
+	\refstepcounter{mykorollarctr}
+	\refstepcounter{mytheoremctr}
 	\bigskip\noindent%         create a vertical offset to previous material
-	\refstepcounter{mytheoremctr}% increment the environment's counter
-	\textsc{\textbf{Theorem} \themytheoremctr}% or \textbf, \textit, ...
+	\textsc{\textbf{Satz} \themytheoremctr}% or \textbf, \textit, ...
 	\newline
 }{\par\bigskip}  %          create a vertical offset to following material
 \numberwithin{mytheoremctr}{section}
 
-\crefname{mytheoremctr}{Theorem}{Theorem}
+\crefname{mytheoremctr}{Satz}{Satz}
+
+%korollar
+\newcounter{mykorollarctr}
+
+\newenvironment{mykorollar}{%      define a custom environment
+	\refstepcounter{mylemmactr}% increment the environment's counter
+	\refstepcounter{mykorollarctr}
+	\refstepcounter{mytheoremctr}
+	\bigskip\noindent%         create a vertical offset to previous material
+	\textsc{\textbf{Korollar} \themykorollarctr}% or \textbf, \textit, ...
+	\newline
+}{\par\bigskip}  %          create a vertical offset to following material
+\numberwithin{mykorollarctr}{section}
+
+\crefname{mykorollarctr}{Korollar}{Korollar}
+
+%lemma
+\newcounter{mylemmactr}
+
+\newenvironment{mylemma}{%      define a custom environment
+	\refstepcounter{mylemmactr}% increment the environment's counter
+	\refstepcounter{mykorollarctr}
+	\refstepcounter{mytheoremctr}
+	\bigskip\noindent%         create a vertical offset to previous material
+	\textsc{\textbf{Lemma} \themylemmactr}% or \textbf, \textit, ...
+	\newline
+}{\par\bigskip}  %          create a vertical offset to following material
+\numberwithin{mylemmactr}{section}
+
+\crefname{mylemmactr}{Lemma}{Lemma}
 
 \newenvironment{myproof}{%      define a custom environment
 	\bigskip\noindent%         create a vertical offset to previous material
@@ -252,11 +285,17 @@ date=short                % Datumsformat
 	\newpage
 	\thispagestyle{sh}
 	\section{c}
+	\begin{mykorollar}
+		content...
+	\end{mykorollar}
+	\begin{mylemma}
+		content...
+	\end{mylemma}
 	\begin{mytheorem}
-		satz 4.23 oder so
+		Die Orthogonalpolynome $q_n \in \prod_n$
 	\end{mytheorem}
 	\begin{myproof}
-	beweis zu satz 4.23 werden wir auch vom g\oe th abschreiben haha
+	beweis zu satz 4.23 werden wir auch vom g\"oth abschreiben haha
 	\end{myproof}
 	\newpage
 	\printbibliography
