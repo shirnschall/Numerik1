@@ -246,6 +246,21 @@ date=short                % Datumsformat
 
 \crefname{mylemmactr}{Lemma}{Lemma}
 
+\newcounter{mybeispielctr}
+
+%beispiel
+\newenvironment{mybeispiel}{%      define a custom environment
+	\refstepcounter{mybeispielctr}
+	\refstepcounter{mybeispielctr}
+	\refstepcounter{mybeispielctr}% increment the environment's counter
+	\par\noindent%         create a vertical offset to previous material
+	\textsc{\textbf{Beispiel} \themybeispielctr}% or \textbf, \textit, ...
+	\newline\noindent
+}{\par\bigskip}  %          create a vertical offset to following material
+\numberwithin{mybeispielctr}{section}
+
+\crefname{mybeispielctr}{Beispiel}{Beispiel}
+
 \newenvironment{myproof}{%      define a custom environment
 	\bigskip\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{\\Beweis}}% or \textbf, \textit, ...
@@ -262,26 +277,41 @@ date=short                % Datumsformat
 	\thispagestyle{general}
 	\newpage
 	\thispagestyle{rd}
-	\section{a}
-	Im folgenden Projekt werden zwei mögliche Strategien erläutern, um exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) zu integrieren.
-	\begin{itemize}
+	\noindent
+	Um exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) zu integrieren, bieten sich zwei Möglichkeiten an
+	\begin{itemize}		
 	\item[a)] 	Abschneiden des unbeschränkten Intervalls und Anwendung einer Quadraturformel für ein beschränktes Intervall [0,T] für T > 0
 	\item[b)] 	Anwendung einer Gaußquadratur für die Gewichtsfunktion w(x) = exp(-x) 
 	\end{itemize}
-	Zuerst wird sich dem ersten Teil gewidmet. \\
+	\section{Abschneiden eines Intervalls}
+	\begin{mylemma}
 	Sei $f$ : [0,$\infty$) $\rightarrow$ $\R$ eine beschränkte Funktion. Desweiteren definieren wir für eine Menge M $\subset$ [0,$\infty$) das gewichtete Integral von $f$ mit
 	\begin{align*}
-	Q_M(f) := \int_{M}^{}{f(x)exp(-x)dx}
+		Q_M(f) := \int_{M}^{}{f(x)exp(-x)dx}
 	\end{align*}
 	Das Integral $Q_{[0,\infty)}(f)$ kann man approximieren, indem man für ein T > 0 das Integral auf dem beschränkten Intervall $Q_{[0,T)}(f)$ durch die summierte Trapezformel $Q_{h,T}(f)$ appromiert. Es folgt eine Fehlerabschätzung der Form 
 	\begin{align*}
-	|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h
+		|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h 
 	\end{align*}
 	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind.
+	\end{mylemma}
 	\begin{myproof}
-		Als Erinnerung schaut die Quadraturformel folgendermaßen aus
+		Zun\"achst  sei Bemerkt, dass \autocite[Beispiel 4.9][40-41]{skript}: \\
+		Mit $C_1 := \norm{f}_{\infty}$ , \quad $\varepsilon_T := \int_{T}^{\infty}{e^{-x} dx}$ 
+		\quad $C_2 := \norm{f^{''}}_{\infty}$ , \quad $\varepsilon_h := \frac{h^{2}}{12}$
+		\begin{align*}
+			|Q_{[0,\infty)}(f) - Q_{h,T}(f)| &\le |Q_{[0,\infty)}(f) - Q_{[0,T)}(f)| + |Q_{[0,T)}(f) - Q_{h,T}(f)| \\
+			&= |Q_{(T,\infty)}(f)| + |Q_{[0,T)}(f) - Q_{h,T}(f)| \\
+			&\le \norm{f}_{\infty}\int_{T}^{\infty}{e^{-x} dx} + \left|-\frac{T}{12}h^{2}f^{''}(\xi)\right| \\
+			&= C_1\varepsilon_T + T\frac{h^{2}}{12}|f^{''}(\xi)| \\
+			& \le C_1\varepsilon_T + \norm{f^{''}}_{\infty}T\frac{h^{2}}{12} \\
+			& = C_1\varepsilon_T + C_2T\varepsilon_h 
+		\end{align*}
+		$\hfill\blacksquare$
 	\end{myproof}
 	\newpage
+	\begin{mybeispiel}
+	\end{mybeispiel}
 	\thispagestyle{rd}
 	\section{b}
 	
