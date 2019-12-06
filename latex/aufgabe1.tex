@@ -207,6 +207,7 @@ date=short                % Datumsformat
 \newenvironment{mytheorem}{%      define a custom environment
 	\refstepcounter{mylemmactr}% increment the environment's counter
 	\refstepcounter{mykorollarctr}
+	\refstepcounter{mybeispielctr}% increment the environment's counter
 	\refstepcounter{mytheoremctr}
 	\par \noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Satz} \themytheoremctr}% or \textbf, \textit, ...
@@ -222,6 +223,7 @@ date=short                % Datumsformat
 \newenvironment{mykorollar}{%      define a custom environment
 	\refstepcounter{mylemmactr}% increment the environment's counter
 	\refstepcounter{mytheoremctr}
+	\refstepcounter{mybeispielctr}% increment the environment's counter
 	\refstepcounter{mykorollarctr}
 	\par\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Korollar} \themykorollarctr}% or \textbf, \textit, ...
@@ -237,6 +239,7 @@ date=short                % Datumsformat
 \newenvironment{mylemma}{%      define a custom environment
 	\refstepcounter{mykorollarctr}
 	\refstepcounter{mytheoremctr}
+	\refstepcounter{mybeispielctr}% increment the environment's counter
 	\refstepcounter{mylemmactr}% increment the environment's counter
 	\par\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Lemma} \themylemmactr}% or \textbf, \textit, ...
@@ -250,8 +253,9 @@ date=short                % Datumsformat
 
 %beispiel
 \newenvironment{mybeispiel}{%      define a custom environment
-	\refstepcounter{mybeispielctr}
-	\refstepcounter{mybeispielctr}
+	\refstepcounter{mykorollarctr}
+	\refstepcounter{mytheoremctr}
+	\refstepcounter{mylemmactr}% increment the environment's counter
 	\refstepcounter{mybeispielctr}% increment the environment's counter
 	\par\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{Beispiel} \themybeispielctr}% or \textbf, \textit, ...
@@ -265,7 +269,7 @@ date=short                % Datumsformat
 	\bigskip\noindent%         create a vertical offset to previous material
 	\textsc{\textbf{\\Beweis}}% or \textbf, \textit, ...
 	\indent
-}{\par\bigskip}  %          create a vertical offset to following material
+}{\qed\par\bigskip}  %          create a vertical offset to following material
 
 
 \newcommand{\mpar}[1]{\paragraph*{#1}\mbox{}\par}
@@ -289,28 +293,58 @@ date=short                % Datumsformat
 	\begin{align*}
 		Q_M(f) := \int_{M}^{}{f(x)exp(-x)dx}
 	\end{align*}
-	Das Integral $Q_{[0,\infty)}(f)$ kann man approximieren, indem man für ein T > 0 das Integral auf dem beschränkten Intervall $Q_{[0,T)}(f)$ durch die summierte Trapezformel $Q_{h,T}(f)$ appromiert. Es folgt eine Fehlerabschätzung der Form 
+	Das Integral $Q_{[0,\infty)}(f)$ kann man approximieren, indem man für ein T > 0 das Integral auf dem beschränkten Intervall $Q_{[0,T)}(f)$ durch die summierte Trapezformel $Q_{h,T}(f)$ berechnet. Es folgt eine Fehlerabschätzung der Form 
 	\begin{align*}
 		|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h 
 	\end{align*}
-	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind.
+	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Desweiteren wir vorausgesetzt, dass f hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung der Funktion beschränkt ist.
 	\end{mylemma}
 	\begin{myproof}
-		Zun\"achst  sei Bemerkt, dass \autocite[Beispiel 4.9][40-41]{skript}: \\
-		Mit $C_1 := \norm{f}_{\infty}$ , \quad $\varepsilon_T := \int_{T}^{\infty}{e^{-x} dx}$ 
-		\quad $C_2 := \norm{f^{''}}_{\infty}$ , \quad $\varepsilon_h := \frac{h^{2}}{12}$
+		Mit \autocite[vgl.][40-41]{skript}: \\
+		und $C_1 := \norm{f}_{\infty}$ , \quad $\varepsilon_T := e^{-T}$ ,
+		\quad $C_2 := \norm{f^{''}}_{\infty}$ , \quad $\varepsilon_h := \frac{h^{2}}{12}$ folgt unmittelbar
 		\begin{align*}
-			|Q_{[0,\infty)}(f) - Q_{h,T}(f)| &\le |Q_{[0,\infty)}(f) - Q_{[0,T)}(f)| + |Q_{[0,T)}(f) - Q_{h,T}(f)| \\
+			|Q_{[0,\infty)}(f) - Q_{h,T}(f)| &\le |Q_{[0,\infty)}(f) - Q_{[0,T]}(f)| + |Q_{[0,T]}(f) - Q_{h,T}(f)| \\
 			&= |Q_{(T,\infty)}(f)| + |Q_{[0,T)}(f) - Q_{h,T}(f)| \\
 			&\le \norm{f}_{\infty}\int_{T}^{\infty}{e^{-x} dx} + \left|-\frac{T}{12}h^{2}f^{''}(\xi)\right| \\
-			&= C_1\varepsilon_T + T\frac{h^{2}}{12}|f^{''}(\xi)| \\
+			&= C_1e^{-T} + T\frac{h^{2}}{12}|f^{''}(\xi)| \\
 			& \le C_1\varepsilon_T + \norm{f^{''}}_{\infty}T\frac{h^{2}}{12} \\
 			& = C_1\varepsilon_T + C_2T\varepsilon_h 
 		\end{align*}
-		$\hfill\blacksquare$
 	\end{myproof}
 	\newpage
 	\begin{mybeispiel}
+		Der Fehlerterm wurde in Python eingegeben und geplottet
+		\begin{lstlisting}[language=Python, caption=Python example]
+		import numpy as np
+		import matplotlib.pylab as plt
+		
+		def f(x):
+			return np.sin(x)/x*np.exp(-x)
+		
+		def sumtrapez(t,n):
+			h = t/n
+			s = 0
+			for i in range (1, n):
+				x = i*h
+				s += f(x)
+			return h/2 * (1 + 2 * s + f(t)) #1 = f(0) stetig fortgestzt
+		
+		x = np.linspace(1,100)
+		y = abs(np.pi/4-sumtrapez(x,1000)) #Anzahl der Funktionsauswertungen = 1000
+		plt.loglog(x,y)
+		plt.xlabel('T', size='large')
+		plt.ylabel('Fehler', size='large')
+		plt.show
+		\end{lstlisting}
+		\begin{figure}
+			\begin{center}
+				\includegraphics{Fehlerplot.png}
+			\end{center}
+			\caption{Fehlerplot in Abhängigkeit von fixen Funktionsauswertungen.}
+			
+		\end{figure}
+		\textbf{Bemerkung}:
 	\end{mybeispiel}
 	\thispagestyle{rd}
 	\section{b}
