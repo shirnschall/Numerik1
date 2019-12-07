@@ -147,6 +147,9 @@ date=short                % Datumsformat
 	emphstyle={\color{ForestGreen}}
 }
 
+\Crefname{lstlisting}{Listing}{Listing}
+
+
 %italic quotes
 \newenvironment{italicquotes}
 {\begin{quote}\itshape}
@@ -373,7 +376,7 @@ date=short                % Datumsformat
 	\end{mylemma}
 
 	\noindent Woraus sich dann folgender Satz ergibt:
-	\begin{mytheorem}
+	\begin{mytheorem}\label{aufgabec-satz}
 		%Korollar 4.15  \autocite[45]{skript}
 		Die Orthogonalpolynome $q_n \in \prod_n$ aus \cref{4.15} sind eindeutig durch die folgenden 3 Terme gegeben
 		\begin{align*}
@@ -408,6 +411,8 @@ date=short                % Datumsformat
 		
 	\end{myproof}
 	\newpage
+	Somit ist also die in \Cref{aufgabed-code} zu sehende Vorgehensweise gerechtfertigt.
+	\lstinputlisting[language=c,firstline=9,lastline=18,label={aufgabed-code},caption={M\"ogliche Implementierung von \cref{aufgabec-satz}}]{../code/aufgabe-d/main.cpp}
 	\printbibliography
 	\listoffigures
 	\listoftables
