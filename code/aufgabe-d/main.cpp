@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cmath>
 #include <stdio.h>
+#include </usr/local/include/eigen3/Eigen/Dense>
+
+using Eigen::MatrixXd;
 
 double g(double);
 double f(double);
