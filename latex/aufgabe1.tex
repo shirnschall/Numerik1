@@ -41,6 +41,7 @@ date=short                % Datumsformat
 \usepackage{color}
 \usepackage{multirow}
 \usepackage{textcomp}
+\usepackage{float}
 %\usepackage[dvipsnames]{xcolor}
 
 
@@ -283,7 +284,7 @@ date=short                % Datumsformat
 	\tableofcontents
 	\thispagestyle{general}
 	\newpage
-	\thispagestyle{rd}
+
 	\noindent
 	Um exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) zu integrieren, bieten sich zwei Möglichkeiten an
 	\begin{itemize}		
@@ -317,48 +318,27 @@ date=short                % Datumsformat
 	\end{myproof}
 	\newpage
 	\begin{mybeispiel}
-		Der Fehlerterm wurde in Python eingegeben und geplottet
-		\begin{lstlisting}[language=Python, caption=Python example]
-		import numpy as np
-		import matplotlib.pylab as plt
-		
-		def f(x):
-			return np.sin(x)/x*np.exp(-x)
-		
-		def sumtrapez(t,n):
-			h = t/n
-			s = 0
-			for i in range (1, n):
-				x = i*h
-				s += f(x)
-			return h/2 * (1 + 2 * s + f(t)) #1 = f(0) stetig fortgestzt
-		
-		x = np.linspace(1,100)
-		y = abs(np.pi/4-sumtrapez(x,1000)) #Anzahl der Funktionsauswertungen = 1000
-		plt.loglog(x,y)
-		plt.xlabel('T', size='large')
-		plt.ylabel('Fehler', size='large')
-		plt.show
-		\end{lstlisting}
-		\begin{figure}
+		Der Fehlerterm wurde in Python eingegeben und geplottet. \\
+		Es wurde n = 1000 gewählt und T $\in [1,100]$ mit der Funktion $f(x) := \frac{sin(x)}{x}$
+		\lstinputlisting[language=Python, firstline = 4, caption=Implementierung des Fehlers]{aufgabeb.py}
+		\begin{figure}[H]
 			\begin{center}
-				\includegraphics{Fehlerplot.png}
+				\includegraphics[width=0.85\textwidth]{Fehlerplot.png}
 			\end{center}
 			\caption{Fehlerplot in Abhängigkeit von fixen Funktionsauswertungen.}
-			
+			\label{fig:fehlerplot}	
 		\end{figure}
-		\textbf{Bemerkung}:
+		
+		\textbf{Bemerkung}: Um das exakte Integral zu bestimmen, müsste T $\rightarrow \infty$ und h $\rightarrow 0$. Wir wollen numerisch integrieren, d.h. der Fehler wird beliebig klein. Aus Lemma 1.1 und \cref{fig:fehlerplot} ist nun offensichtlich bemerkbar, falls die Anzahl an Funktionsauswertungen steigt, auch T größer gewählt werden kann, jedoch T <= Anzahl der Funktionsauswertungen, damit der Fehler immer noch klein bleibt. Für eine fixe Anzahl an Funktionsauswertungen, kann T so gewählt werden, damit der Fehler minimal ist, indem man die erste Ableitung nach T in Lemma 1.1 bildet und die gleich 0 setzt. Für die Lösung $T_0$ gilt, die zweite Ableitung an der Stelle $T_0 > 0$, d.h. ein Minimum befindet sich an der Stelle. 
 	\end{mybeispiel}
-	\thispagestyle{rd}
+	\newpage
+
 	\section{b}
-	
-	
 	
 	
 	
 	%sebastians teil
 	\newpage
-	\thispagestyle{sh}
 	\section{c}
 	Zun\"achst  sei Bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
