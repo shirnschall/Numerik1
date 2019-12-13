@@ -65,7 +65,7 @@ date=short                % Datumsformat
 \chead{}
 \lhead{}
 %%
-\lfoot{Sebastian Hirnschall}
+\lfoot{Sebastian Hirnschall, Rafael Dorigo}
 \cfoot{}
 \rfoot{\thepage}
 %%
@@ -73,29 +73,6 @@ date=short                % Datumsformat
 \renewcommand{\footrulewidth}{0.2pt}
 \newcommand{\R}{\mathbb{R}}
 
-\fancypagestyle{sh}
-{
-	\fancyhf{}
-	\rhead{}
-	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
-	\chead{}
-	\lhead{}
-	\lfoot{ Sebastian Hirnschall}
-	\cfoot{}
-	\rfoot{\thepage}
-}
-
-\fancypagestyle{rd}
-{
-	\fancyhf{}
-	\rhead{}
-	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
-	\chead{}
-	\lhead{}
-	\lfoot{ Rafael Dorigo}
-	\cfoot{}
-	\rfoot{\thepage}
-}
 
 \fancypagestyle{general}
 {
@@ -292,7 +269,7 @@ date=short                % Datumsformat
 	\item[b)] 	Anwendung einer Gaußquadratur für die Gewichtsfunktion w(x) = exp(-x) 
 	\end{itemize}
 	\section{Abschneiden eines Intervalls}
-	\begin{mylemma}
+	\begin{mylemma}\label{lemma1.1}
 	Sei $f$ : [0,$\infty$) $\rightarrow$ $\R$ eine beschränkte Funktion. Desweiteren definieren wir für eine Menge M $\subset$ [0,$\infty$) das gewichtete Integral von $f$ mit
 	\begin{align*}
 		Q_M(f) := \int_{M}^{}{f(x)exp(-x)dx}
@@ -318,18 +295,27 @@ date=short                % Datumsformat
 	\end{myproof}
 	\newpage
 	\begin{mybeispiel}
-		Der Fehlerterm wurde in Python eingegeben und geplottet. \\
-		Es wurde n = 1000 gewählt und T $\in [1,100]$ mit der Funktion $f(x) := \frac{sin(x)}{x}$
-		\lstinputlisting[language=Python, firstline = 4, caption=Implementierung des Fehlers]{aufgabeb.py}
+		Es wird T fix gewählt und der Fehler in Abhängigkeit von h geplottet mit der Funktion $f(x) := \frac{sin(x)}{x}$
+		\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem T]{fehlerTsinx.py}
 		\begin{figure}[H]
 			\begin{center}
-				\includegraphics[width=0.85\textwidth]{Fehlerplot.png}
+				\includegraphics[width=0.8\textwidth]{FehlerplotT.png}
 			\end{center}
-			\caption{Fehlerplot in Abhängigkeit von fixen Funktionsauswertungen.}
-			\label{fig:fehlerplot}	
+			\caption{Fehlerplot in Abhängigkeit von h.}
+			\label{fig:fehlerplott}	
+		\end{figure}
+		\newpage
+		Um alles übersichtlicher zu machen, wird nun h fix gehalten und T variiert. 
+		\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem h]{fehlerhsinx.py} 	
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{Fehlerploth.png}
+			\end{center}
+			\caption{Fehlerplot in Abhängigkeit von T.}
+			\label{fig:fehlerploth}	
 		\end{figure}
 		
-		\textbf{Bemerkung}: Um das exakte Integral zu bestimmen, müsste T $\rightarrow \infty$ und h $\rightarrow 0$. Wir wollen numerisch integrieren, d.h. der Fehler wird beliebig klein. Aus Lemma 1.1 und \cref{fig:fehlerplot} ist nun offensichtlich bemerkbar, falls die Anzahl an Funktionsauswertungen steigt, auch T größer gewählt werden kann, jedoch T <= Anzahl der Funktionsauswertungen, damit der Fehler immer noch klein bleibt. Für eine fixe Anzahl an Funktionsauswertungen, kann T so gewählt werden, damit der Fehler minimal ist, indem man die erste Ableitung nach T in Lemma 1.1 bildet und die gleich 0 setzt. Für die Lösung $T_0$ gilt, die zweite Ableitung an der Stelle $T_0 > 0$, d.h. ein Minimum befindet sich an der Stelle. 
+		\textbf{Bemerkung}: Bei einer fixen Anzahl an Funktionsauswertungen, kann T optimal gewählt werden, damit der Fehler minimal ist, indem man die erste Ableitung nach T in \cref{lemma1.1} bildet und die gleich 0 setzt. Für die Lösung $T_0$ der Gleichung gilt, dass die zweite Ableitung an der Stelle $T_0 > 0$, d.h. ein Minimum befindet sich an der Stelle. 
 	\end{mybeispiel}
 	\newpage
 
