@@ -4,9 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/c/Users/rafae/OneDrive/Desktop/Uni/Numerik/Numerik1/code/aufgabe-d/main.cpp" "/cygdrive/c/Users/rafae/OneDrive/Desktop/Uni/Numerik/Numerik1/code/aufgabe-d/cmake-build-debug/CMakeFiles/aufgabe_d.dir/main.cpp.o"
+  "/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/gauss.cpp" "/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/cmake-build-debug/CMakeFiles/aufgabe_d.dir/gauss.cpp.o"
+  "/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/main.cpp" "/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/cmake-build-debug/CMakeFiles/aufgabe_d.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
