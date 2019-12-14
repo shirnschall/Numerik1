@@ -6,6 +6,10 @@
 using namespace Eigen;
 
 
+Gauss::~Gauss(){
+
+}
+
 Gauss::Gauss(int n):n(n) {
     T = MatrixXcf::Zero(n+1,n+1);
 
@@ -18,10 +22,6 @@ Gauss::Gauss(int n):n(n) {
     ces = ComplexEigenSolver<MatrixXcf>(T);
     eigenvectors = ces.eigenvectors();
     nodes = T.eigenvalues();
-
-}
-Gauss::~Gauss(){
-
 }
 
 double Gauss::norm(int i){
@@ -35,6 +35,7 @@ double Gauss::norm(int i){
 std::complex<double> Gauss::weigth(int j) {
     return eigenvectors(0,j) * eigenvectors(0,j);
 }
+
 std::complex<double> Gauss::node(int i) {
     return nodes(i);
 }

@@ -6,6 +6,7 @@
 #include "gauss.hpp"
 
 #define N 5
+#define PRECISION 10
 
 using namespace Eigen;
 
@@ -14,9 +15,13 @@ double f(std::complex<double>);
 
 int main() {
 
-    Gauss quadratur(N);
-    std::cout << std::setprecision(10) <<
-                   quadratur.result(f) << std::endl;
+    std::cout << "Quadraturpunkte\tFehler\tFunktion"<<std::endl;
+    for(int i = 1; i < 10; ++i) {
+        Gauss Q(i);
+        double error = atan(1) - Q.result(f);
+        std::cout <<i<<"\t"<< std::setprecision(PRECISION) <<
+                  error << "\tGauss" << std::endl;
+    }
 
 }
 

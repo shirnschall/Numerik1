@@ -252,6 +252,11 @@ date=short                % Datumsformat
 	\indent
 }{\qed\par\bigskip}  %          create a vertical offset to following material
 
+\newenvironment{bemerkung}{%      define a custom environment
+	\bigskip\noindent%         create a vertical offset to previous material
+	\textsc{\textbf{\Bemerkung}}% or \textbf, \textit, ...
+	\indent
+}{\qed\par\bigskip}  %          create a vertical offset to following material
 
 \newcommand{\mpar}[1]{\paragraph*{#1}\mbox{}\par}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
@@ -377,12 +382,25 @@ date=short                % Datumsformat
 		
 	\end{myproof}
 	\newpage
-	Somit ist also die in \Cref{aufgabed-code} zu sehende Vorgehensweise gerechtfertigt.
-	\lstinputlisting[language=c,firstline=9,lastline=18,label={aufgabed-code},caption={M\"ogliche Implementierung von \cref{aufgabec-satz}}]{../code/aufgabe-d/main.cpp}
+	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
+	\lstinputlisting[language=c,firstline=16,lastline=29,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
+	\lstinputlisting[language=c,firstline=13,lastline=49,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
 	
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e.png}
+		\end{center}
+		\caption{Vergleich von ..}
+		\label{fig:vergleich}	
+	\end{figure}
 	
-	
-	
+	     \begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Fehlerploth.png}
+\end{center}
+\caption{Fehlerplot in Abhängigkeit von T.}
+\label{fig:fehlerploth}
+\end{figure}
 	%literatur,abbildungsverzeichnis etc.
 	\newpage
 	\printbibliography
