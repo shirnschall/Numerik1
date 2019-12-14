@@ -1,4 +1,3 @@
-ToolSet: 2.11.1 (local)@C:\cygwin
 Options: 
 
 Options:

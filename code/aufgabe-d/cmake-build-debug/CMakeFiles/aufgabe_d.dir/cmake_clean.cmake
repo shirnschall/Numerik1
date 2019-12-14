@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/aufgabe_d.dir/main.cpp.o"
+  "CMakeFiles/aufgabe_d.dir/gauss.cpp.o"
   "aufgabe_d.pdb"
-  "aufgabe_d.exe"
-  "libaufgabe_d.dll.a"
+  "aufgabe_d"
 )
 
 # Per-language clean rules from dependency scanning.
