@@ -10,14 +10,19 @@ from sympy import symbols, solve, exp
 import matplotlib.pylab as plt
 
 n, t = symbols('n,t')
-n = 2**np.arange(8)
+n = 2**np.arange(6)
 T = []
 
 for i in n:
     T.append((solve(t**3/(12*i**2)- exp(-t),t)))
+    
+h=[]
+for i in n:
+    h.append((solve(t*i**2/(12)- exp(-t),t)))
 
-plt.plot(n,T)
+plt.loglog(n,T)
+plt.loglog(n,h)
 plt.grid(which='major', linewidth=0.5)
 plt.xlabel('n', size='large')
-plt.ylabel('T', size='large')
+plt.ylabel('T/h', size='large')
 plt.show

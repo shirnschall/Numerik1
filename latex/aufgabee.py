@@ -30,4 +30,4 @@ l = [1.424160049, 1.917747325, 2.249717401, 2.503921300, 2.711393902, 2.88737854
 
 for i in n:
     print(i)
-    print(sumtrapez(l[i-1],l[i-1]/(i)))
+    print(abs(np.pi/4-sumtrapez(l[i-1],l[i-1]/(i))))
