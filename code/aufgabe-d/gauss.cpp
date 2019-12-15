@@ -40,10 +40,14 @@ std::complex<double> Gauss::node(int i) {
     return nodes(i);
 }
 
-double Gauss::result(double f(std::complex<double>)){
+double Gauss::result(double f(double)){
     std::complex<double> sum = 0;
     for(int i = 0; i < n;++i){
-        sum += weigth(i)*f(node(i));
+        sum += weigth(i)*f(node(i).real());
     }
     return sum.real();
+}
+
+int Gauss::nodesc(){
+    return nodes.rows();
 }

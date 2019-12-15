@@ -25,7 +25,8 @@ public:
     double norm(int);
     std::complex<double>  weigth(int);
     std::complex<double> node(int);
-    double result(double f(std::complex<double>));
+    double result(double f(double));
+    int nodesc();
 };
 
 

@@ -261,8 +261,46 @@ date=short                % Datumsformat
 \newcommand{\mpar}[1]{\paragraph*{#1}\mbox{}\par}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 
+\fancypagestyle{firststyle}
+{
+	\fancyhf{}
+	\rhead{}
+	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
+	\chead{}
+	\lhead{}
+	\lfoot{ Sebastian Hirnschall}
+	\cfoot{}
+	\rfoot{\thepage}
+}
 
 \begin{document}
+	\newgeometry{bottom=1cm,top=7.5cm}
+	\begin{titlepage}
+		\centering
+		\vspace{10cm}
+		{\huge\bfseries Numerische Integration\par}
+		\vspace{2cm}
+		{\Large\itshape Sebastian Hirnschall\\Rafael Dorigo\par}
+		\vspace{3cm}
+		\begin{figure}[!h]
+			\vspace{0cm}
+			\centering
+			\includegraphics[width=\textwidth]{./titlepage.png}
+		\end{figure}
+		
+		\vfill
+		
+		% Bottom of the page
+		{\large \today\par}
+	\end{titlepage}
+	\restoregeometry
+	
+	\thispagestyle{firststyle}
+	
+	\newpage
+	
+	
+	
 	\tableofcontents
 	\thispagestyle{general}
 	\newpage
@@ -384,7 +422,7 @@ date=short                % Datumsformat
 	\end{myproof}
 	\newpage
 	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
-	\lstinputlisting[language=c,firstline=16,lastline=29,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
+	\lstinputlisting[language=c,firstline=16,lastline=27,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
 	\lstinputlisting[language=c,firstline=13,lastline=49,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
 	
 	\begin{figure}[H]
@@ -396,12 +434,13 @@ date=short                % Datumsformat
 	\end{figure}
 	
 	     \begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{Fehlerploth.png}
-\end{center}
-\caption{Fehlerplot in Abhängigkeit von T.}
-\label{fig:fehlerploth}
-\end{figure}
+		 \begin{center}
+				\includegraphics[width=0.8\textwidth]{../plots/quadraturpunkte-n-zusammen.png}
+		  \end{center}
+		  \caption{Quadraturpunkte und zugeh\"orige Gewichte}
+		  \label{fig:quadraturpunkte}
+		  \end{figure}
+	  
 	%literatur,abbildungsverzeichnis etc.
 	\newpage
 	\printbibliography
