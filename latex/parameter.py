@@ -10,7 +10,7 @@ from sympy import symbols, solve, exp
 import matplotlib.pylab as plt
 
 n, t = symbols('n,t')
-n = 2**np.arange(6)
+n = 2**np.arange(10)
 T = []
 
 for i in n:
@@ -24,5 +24,5 @@ plt.loglog(n,T)
 plt.loglog(n,h)
 plt.grid(which='major', linewidth=0.5)
 plt.xlabel('n', size='large')
-plt.ylabel('T/h', size='large')
+plt.legend('Th')
 plt.show

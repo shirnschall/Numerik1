@@ -87,8 +87,6 @@ date=short                % Datumsformat
 }
 
 
-
-
 %listings settings
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -156,13 +154,10 @@ date=short                % Datumsformat
 }
 
 
-
-
 \numberwithin{equation}{section} 
 %\makeatletter
 %\@addtoreset{equation}{section}
 %\makeatother
-
 
 
 %\newtheorem{theorem}{Theorem}[section]
@@ -300,7 +295,6 @@ date=short                % Datumsformat
 	\newpage
 	
 	
-	
 	\tableofcontents
 	\thispagestyle{general}
 	\newpage
@@ -358,18 +352,21 @@ date=short                % Datumsformat
 			\label{fig:fehlerploth}	
 		\end{figure}
 		\newpage
-		Man sieht nun aus \cref{fig:fehlerploth} und \cref{fig:fehlerplott}, dass bei kleiner werdenden h bzw. bei Erhöhung von T sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty]$ auf $[0,T]$ beschränken und somit 
-		\textbf{Bemerkung}: Bei einer fixen Anzahl an Funktionsauswertungen, kann T optimal gewählt werden, damit der Fehler minimal ist, indem man die erste Ableitung nach T in \cref{lemma1.1} bildet und die gleich 0 setzt. Für die Lösung $T_0$ der Gleichung gilt, dass die zweite Ableitung an der Stelle $T_0 > 0$, d.h. ein Minimum befindet sich an der Stelle. 
+		Man sieht nun aus \cref{fig:fehlerplott}, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty]$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden. Dasselbe passiert auch in \cref{fig:fehlerploth}, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Die beiden Plot ändern sich auch bei verschieden Funktionen nicht, das einzige was passiert, ist dass sich der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt.  \\ \newline
+		\textbf{Bemerkung}: Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. D. h. bei einer gegebenen Anzahl an Funktionsauswertungen kann man T bzw. h wie im folgenden Plot gewählt. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ gelten.
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{parameterth.png}
+			\end{center}
+			\caption{Parameterwahl bei fixem n.}
+			\label{fig:parameterth}	
+		\end{figure}
+		 
 	\end{mybeispiel}
 	\newpage
-
-	\section{b}
-	
-	
 	
 	%sebastians teil
-	\newpage
-	\section{c}
+	\section{Anwendung der Gaußquadratur}
 	Zun\"achst  sei Bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
 		Es existiert eine eindeutig bestimmte Folge $(q_n)$ von Polynomen der Form
@@ -427,19 +424,22 @@ date=short                % Datumsformat
 	
 	\begin{figure}[H]
 		\begin{center}
+			\includegraphics[width=0.8\textwidth]{../plots/quadraturpunkte-n-zusammen.png}
+		\end{center}
+		\caption{Quadraturpunkte und zugeh\"orige Gewichte}
+		\label{fig:quadraturpunkte}
+	\end{figure}
+	
+	\newpage
+	\section{Vergleich der beiden Integraturmethoden}
+	Bei der summierten Trapezformel wurde für jedes n ein optimales T gewählt wie in \cref{fig:parameterth}
+	\begin{figure}[H]
+		\begin{center}
 			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e.png}
 		\end{center}
 		\caption{Vergleich von ..}
 		\label{fig:vergleich}	
 	\end{figure}
-	
-	     \begin{figure}[H]
-		 \begin{center}
-				\includegraphics[width=0.8\textwidth]{../plots/quadraturpunkte-n-zusammen.png}
-		  \end{center}
-		  \caption{Quadraturpunkte und zugeh\"orige Gewichte}
-		  \label{fig:quadraturpunkte}
-		  \end{figure}
 	  
 	%literatur,abbildungsverzeichnis etc.
 	\newpage
