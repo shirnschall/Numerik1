@@ -5,7 +5,7 @@ require(dplyr)
 data=read.csv("/Users/shirnschall/Desktop/Numerik1/code/aufgabe-d/orthogonalpolynome",header = TRUE ,sep = "\t")
 
 p <- ggplot(data,aes(x=x,y=y,color=factor(Grad),group=factor(Grad)))+
-  geom_line(size=1) + 
+  geom_line(size=.3) + 
   #scale_x_continuous(trans="log10")+
   labs(color="Grad")+
   theme_bw()

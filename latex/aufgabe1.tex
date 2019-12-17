@@ -43,7 +43,7 @@ date=short                % Datumsformat
 \usepackage{textcomp}
 \usepackage{float}
 %\usepackage[dvipsnames]{xcolor}
-
+\usepackage{mathtools}
 
 \usepackage[table,xcdraw,dvipsnames]{xcolor}
 
@@ -255,6 +255,7 @@ date=short                % Datumsformat
 
 \newcommand{\mpar}[1]{\paragraph*{#1}\mbox{}\par}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 \fancypagestyle{firststyle}
 {
@@ -310,16 +311,16 @@ date=short                % Datumsformat
 	\item[a)] 	Abschneiden des unbeschränkten Intervalls und Anwendung einer Quadraturformel für ein beschränktes Intervall [0,T] für T > 0
 	\item[b)] 	Anwendung einer Gaußquadratur für die Gewichtsfunktion w(x) = exp(-x) 
 	\end{itemize}
-	\section{Abschneiden eines Intervalls}
+	\section{Abschneiden eines Intervalls}\label{trapez}
 	\begin{mylemma}\label{lemma1.1}
 	Sei $f$ : [0,$\infty$) $\rightarrow$ $\R$ eine beschränkte Funktion. Desweiteren definieren wir für eine Menge M $\subset$ [0,$\infty$) das gewichtete Integral von $f$ mit
 	\begin{align*}
 		Q_M(f) := \int_{M}^{}{f(x)exp(-x)dx}
 	\end{align*}
 	Das Integral $Q_{[0,\infty)}(f)$ kann man approximieren, indem man für ein T > 0 das Integral auf dem beschränkten Intervall $Q_{[0,T)}(f)$ durch die summierte Trapezformel $Q_{h,T}(f)$ berechnet. Es folgt eine Fehlerabschätzung der Form 
-	\begin{align*}
-		|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h 
-	\end{align*}
+	\begin{align}
+		|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h \label{eq:trapez-fehler}
+	\end{align}
 	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Desweiteren wir vorausgesetzt, dass f hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung der Funktion beschränkt ist.
 	\end{mylemma}
 	\begin{myproof}
@@ -373,7 +374,7 @@ date=short                % Datumsformat
 	
 	
 	%sebastians teil
-	\section{Gauss–Laguerre Quadratur}
+	\section{Gauss Quadratur}\label{gauss}
 	Zun\"achst  sei Bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
 		Es existiert eine eindeutig bestimmte Folge $(q_n)$ von Polynomen der Form
@@ -438,7 +439,7 @@ date=short                % Datumsformat
 	\end{figure}
 	
 	\newpage
-	\section{Vergleich der beiden Integrationsmethoden}
+	\section{Vergleich der Integrationsmethoden aus \cref{gauss,trapez}}
 	Bei der summierten Trapezformel wurde für jedes n ein optimales T gewählt wie in \cref{fig:parameterth}
 	\begin{figure}[H]
 		\begin{center}
@@ -448,7 +449,20 @@ date=short                % Datumsformat
 		\label{fig:vergleich}	
 	\end{figure}
 
-	\section{Gauss–Hermite Quadratur}
+
+	\subsection{Beschleunigung der Konvergenz}
+	Da f\"ur Funktionen $f,g$ die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt: 
+	\begin{align*}
+		f(x)<g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx < \int_{a}^{b}g(x)dx
+	\end{align*}
+	Ergibt sich f\"ur den Fehler $C_1\epsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktion $\omega : f(x)\omega(x) < f(x)e^{-x}, x \in [T,\infty)$
+	\begin{align*}
+		\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} <\\
+		< \abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
+	\end{align*}	
+	Der bei \cref{trapez} durch das Abschneiden des Intervalls $[0,\infty)$ entstehende Fehler ist also von der Wahl der Gewichtsfunktion abh\"angig. 
+
+	\section{Gauss–Hermite Quadratur?}
 	  Um auch uneigentliche Integrale von $-\infty$ bis $\infty$ zu berechnen, kann als Gewichtsfunktion $e^{-x^2}$ verwendet werden. Es gilt:
 	  \begin{align*}
 	  	\int_{-\infty}^{\infty}e^{-x^2}f(x)dx \approx \sum_{i=1}^{n}w_if(x_i)
