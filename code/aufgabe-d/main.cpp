@@ -5,7 +5,7 @@
 #include </usr/local/include/eigen3/Eigen/Dense>
 #include "gauss.hpp"
 
-#define N 10
+#define N 50
 #define PRECISION 10
 
 using namespace Eigen;
@@ -20,6 +20,7 @@ int main() {
             Gauss Q(i);
 
             double error = fabs(atan(1) - Q.result(f));
+            //double error = Q.result(f);
             std::cout << i << '\t' << std::setprecision(PRECISION) <<
                       error << "\tGauss" << std::endl;
         }
@@ -28,7 +29,7 @@ int main() {
 double f(double x){
     //sin(x)/x      sonst
     //1             x=0
-    return std::abs(x)>10e-7?((sin(x)/x)) : (double)1;
+    return std::abs(x)>10e-7?(exp(x)*(sin(x)/x)) : (double)1;
 }
 
 double g(double x){

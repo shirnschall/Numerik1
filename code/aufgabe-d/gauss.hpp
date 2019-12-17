@@ -14,10 +14,10 @@ using namespace Eigen;
 
 class Gauss {
     int n;
-    MatrixXcf T;
-    MatrixXcf eigenvectors;
-    VectorXcf nodes;
-    ComplexEigenSolver<MatrixXcf> ces;
+    MatrixXcd T;
+    MatrixXcd eigenvectors;
+    VectorXcd nodes;
+    ComplexEigenSolver<MatrixXcd> ces;
 public:
 
     Gauss(int);

@@ -11,17 +11,18 @@ Gauss::~Gauss(){
 }
 
 Gauss::Gauss(int n):n(n) {
-    T = MatrixXcf::Zero(n+1,n+1);
+    T = MatrixXcd::Zero(n+1,n+1);
 
     T(0,0)=1;
     for(int i = 1; i < n+1; ++i){
         T(i-1,i)=-(i);
         T(i,i-1)=-(i);
-        T(i,i)=2*(i+1)-1;
+        T(i,i)=2*(i+1)-1.;
     }
-    ces = ComplexEigenSolver<MatrixXcf>(T);
+    ces = ComplexEigenSolver<MatrixXcd>(T);
     eigenvectors = ces.eigenvectors();
     nodes = T.eigenvalues();
+    //std::cout << T << std::endl;
 }
 
 double Gauss::norm(int i){
@@ -42,7 +43,7 @@ std::complex<double> Gauss::node(int i) {
 
 double Gauss::result(double f(double)){
     std::complex<double> sum = 0;
-    for(int i = 0; i < n;++i){
+    for(int i = 0; i < n+1;++i){
         sum += weigth(i)*f(node(i).real());
     }
     return sum.real();
