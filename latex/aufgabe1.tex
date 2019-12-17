@@ -370,8 +370,10 @@ date=short                % Datumsformat
 	\end{mybeispiel}
 	\newpage
 	
+	
+	
 	%sebastians teil
-	\section{Anwendung der Gaußquadratur}
+	\section{Gauss–Laguerre Quadratur}
 	Zun\"achst  sei Bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
 		Es existiert eine eindeutig bestimmte Folge $(q_n)$ von Polynomen der Form
@@ -436,16 +438,21 @@ date=short                % Datumsformat
 	\end{figure}
 	
 	\newpage
-	\section{Vergleich der beiden Integraturmethoden}
+	\section{Vergleich der beiden Integrationsmethoden}
 	Bei der summierten Trapezformel wurde für jedes n ein optimales T gewählt wie in \cref{fig:parameterth}
 	\begin{figure}[H]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e.png}
+			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e2.png}
 		\end{center}
 		\caption{Vergleich von ..}
 		\label{fig:vergleich}	
 	\end{figure}
-	  
+
+	\section{Gauss–Hermite Quadratur}
+	  Um auch uneigentliche Integrale von $-\infty$ bis $\infty$ zu berechnen, kann als Gewichtsfunktion $e^{-x^2}$ verwendet werden. Es gilt:
+	  \begin{align*}
+	  	\int_{-\infty}^{\infty}e^{-x^2}f(x)dx \approx \sum_{i=1}^{n}w_if(x_i)
+	  \end{align*}
 	%literatur,abbildungsverzeichnis etc.
 	\newpage
 	\printbibliography

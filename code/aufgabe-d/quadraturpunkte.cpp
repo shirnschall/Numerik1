@@ -5,7 +5,7 @@
 #include </usr/local/include/eigen3/Eigen/Dense>
 #include "gauss.hpp"
 
-#define N 3
+#define N 11
 #define PRECISION 10
 
 using namespace Eigen;
@@ -19,7 +19,7 @@ int main() {
     std::cout<<"Quadraturpunkte\tGewichte\tn"<<std::endl;
 
     for(int i = 0; i < Q.nodesc(); ++i) {
-        double error = atan(1) - Q.result(f);
+        double error = fabs(atan(1) - Q.result(f));
         std::cout << std::setprecision(PRECISION) <<
                   Q.node(i).real() << "\t" << Q.weigth(i).real() <<
                   "\t"<<N<<std::endl;

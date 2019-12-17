@@ -27,6 +27,7 @@ public:
     std::complex<double> node(int);
     double result(double f(double));
     int nodesc();
+    double q(int, double);
 };
 
 

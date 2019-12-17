@@ -5,24 +5,23 @@
 #include </usr/local/include/eigen3/Eigen/Dense>
 #include "gauss.hpp"
 
-#define N 10
+#define N 6
 #define PRECISION 10
 
 using namespace Eigen;
 
-double f(double);
-double g(double);
 
 
 int main() {
-    std::cout << "Quadraturpunkte\tFehler\tFunktion" << std::endl;
-        for(int i=0;i<N+1;++i) {
-            Gauss Q(i);
 
-            double error = fabs(atan(1) - Q.result(f));
-            std::cout << i << '\t' << std::setprecision(PRECISION) <<
-                      error << "\tGauss" << std::endl;
-        }
+
+    Gauss Q(N);
+    std::cout << "x\ty\tGrad" << std::endl;
+    for(int i=1;i<N;++i) {
+        for(double j = -5;j<15;j += 0.001)
+        std::cout << j << '\t' << std::setprecision(PRECISION) <<
+                  Q.q(i,j) << '\t' << i << std::endl;
+    }
 }
 
 double f(double x){

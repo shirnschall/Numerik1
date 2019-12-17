@@ -51,3 +51,15 @@ double Gauss::result(double f(double)){
 int Gauss::nodesc(){
     return nodes.rows();
 }
+
+double Gauss::q(int n,double x){
+    //fuer nicht komplexe werte
+    if(!n)
+        return 1;
+    if(n == 1)
+        return (x - T(0,0).real())*q(0,x);
+
+    double beta = T(n-1,n-1).real();
+    double gamma = T(n,n-1).real();
+    return (x - beta)*q(n-1,x) - gamma*gamma*q(n-2,x);
+}
