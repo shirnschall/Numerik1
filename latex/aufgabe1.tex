@@ -44,6 +44,8 @@ date=short                % Datumsformat
 \usepackage{float}
 %\usepackage[dvipsnames]{xcolor}
 \usepackage{mathtools}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \usepackage[table,xcdraw,dvipsnames]{xcolor}
 
@@ -461,6 +463,27 @@ date=short                % Datumsformat
 		< \abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
 	\end{align*}	
 	Der bei \cref{trapez} durch das Abschneiden des Intervalls $[0,\infty)$ entstehende Fehler ist also von der Wahl der Gewichtsfunktion abh\"angig. 
+	Durch die Wahl einer geeigneten Gewichtsfunktion kann die Konvergenz des Integrationsverfahrens beschleunigt werden.
+	
+	
+	\begin{figure}[H]
+		\begin{subfigure}[c]{0.5\textwidth}
+			
+			\includegraphics[width=\linewidth]{../plots/aufgabe-e2.png}
+			\subcaption{Verschiedene Gewichtsfunktionen}\label{fig:gewichtsfunktionen-vergleich}
+			
+		\end{subfigure}
+		\begin{subfigure}[c]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{../plots/aufgabe-e2.png}
+			\subcaption{Trapez vs Gau\ss quadratur}\label{fig:gauss-vs-besseretrapez}
+		\end{subfigure}
+	\caption{\"Anderungen zur Konvergenzbeschleunigung}
+	\end{figure}
+	%abbildung trapez e^-x vs e^-x^2
+	
+	%und abbildung trapez e^-x^2 vs gauss
+	Wie in \cref{fig:gewichtsfunktionen-vergleich} zu sehen ist, geht der Fehler f\"ur $e^{-x^2}$ wesentlich schneller gegen Null als bei $e^{-x}$. Trotzdem bleibt die Konvergenz langsamer als bei der in \cref{gauss} beschriebenen Gau\ss -Quadratur (\cref{fig:gauss-vs-besseretrapez}).
+
 
 	\section{Gauss–Hermite Quadratur?}
 	  Um auch uneigentliche Integrale von $-\infty$ bis $\infty$ zu berechnen, kann als Gewichtsfunktion $e^{-x^2}$ verwendet werden. Es gilt:
