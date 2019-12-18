@@ -20,14 +20,27 @@ def sumtrapez(t,h):
 
 n, t = symbols('n,t')
 n = np.arange(1,11,1)
-T = []
 
+T = 100
+
+h  = []
+
+n = np.arange(1,10000,100)
 for i in n:
-    T.append((solve(t**3/(12*i**2)-exp(-t),t)))
-    print(solve(t**3/(12*i**2)- exp(-t),t))
+    h.append(T/i)
+
+#print(h)
+
+for i in range(1,100):
+    print(i*100, abs(np.pi/4-sumtrapez(T,h[i-1])))
+#T = []
+
+#for i in n:
+#    T.append((solve(t**3/(12*i**2)-exp(-t),t)))
+    #print(solve(t**3/(12*i**2)- exp(-t),t))
     
-l = [1.424160049, 1.917747325, 2.249717401, 2.503921300, 2.711393902, 2.887378548, 3.040581051, 3.176474208, 3.298736895, 3.409968060]
+#l = [1.424160049, 1.917747325, 2.249717401, 2.503921300, 2.711393902, 2.887378548, 3.040581051, 3.176474208, 3.298736895, 3.409968060]
 
-for i in n:
-    print(i)
-    print(abs(np.pi/4-sumtrapez(l[i-1],l[i-1]/(i))))
+#for i in n:
+    #print(i)
+    #print(abs(np.pi/4-sumtrapez(l[i-1],l[i-1]/(i))))
