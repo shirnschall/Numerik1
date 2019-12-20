@@ -79,7 +79,7 @@ date=short                % Datumsformat
 \fancypagestyle{general}
 {
 	\fancyhf{}
-	\rhead{}
+	\rhead{\rightmark}
 	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
 	\chead{}
 	\lhead{}
@@ -259,10 +259,12 @@ date=short                % Datumsformat
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
+
+\pagestyle{fancy}
 \fancypagestyle{firststyle}
 {
 	\fancyhf{}
-	\rhead{}
+	\rhead{\rightmark}
 	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
 	\chead{}
 	\lhead{}
@@ -453,17 +455,33 @@ date=short                % Datumsformat
 
 
 	\subsection{Beschleunigung der Konvergenz}
-	Da f\"ur Funktionen $f,g$ die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt: 
+	Da f\"ur Funktionen $f,g$ die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
 	\begin{align*}
-		f(x)<g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx < \int_{a}^{b}g(x)dx
+		f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx
 	\end{align*}
-	Ergibt sich f\"ur den Fehler $C_1\epsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktion $\omega : f(x)\omega(x) < f(x)e^{-x}, x \in [T,\infty)$
+	Ergibt sich f\"ur den Fehler $C_1\epsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktionen $\omega : f(x)\omega(x) \leq f(x)e^{-x}, x \in [T,\infty)$
 	\begin{align*}
-		\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} <\\
-		< \abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
+		\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} \geq \\
+		 \abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
 	\end{align*}	
-	Der bei \cref{trapez} durch das Abschneiden des Intervalls $[0,\infty)$ entstehende Fehler ist also von der Wahl der Gewichtsfunktion abh\"angig. 
-	Durch die Wahl einer geeigneten Gewichtsfunktion kann die Konvergenz des Integrationsverfahrens beschleunigt werden.
+	Der bei \cref{trapez} durch das Abschneiden des Intervalls $[0,\infty)$ entstehende Fehler ist also stark von der Wahl der Gewichtsfunktion abh\"angig.(\cref{fig:f-vergleich-int}) 
+	Durch die Wahl einer geeigneten Gewichtsfunktion kann die Konvergenz des Integrationsverfahrens also beschleunigt werden.
+	
+	
+	\begin{figure}[H]
+		\begin{subfigure}[t]{0.5\textwidth}
+			
+			\includegraphics[width=\linewidth]{../plots/aufgabe-e-vergleich.png}
+			\subcaption{$f(x)\omega(x)$ f\"ur verschiedene $\omega(x)$}\label{fig:f-vergleich}
+			
+		\end{subfigure}
+		\begin{subfigure}[t]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{../plots/aufgabe-e-vergleich-integral.png}
+			\subcaption{Von T abh\"angiger Fehler f\"ur verschiedene Gewichtsfunktionen}\label{fig:f-vergleich-int}
+		\end{subfigure}
+		\caption{Von T abh\"angiger Fehler}
+	\end{figure}
+	
 	
 	
 	\begin{figure}[H]
