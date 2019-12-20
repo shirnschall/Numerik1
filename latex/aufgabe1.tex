@@ -251,7 +251,7 @@ date=short                % Datumsformat
 
 \newenvironment{bemerkung}{%      define a custom environment
 	\bigskip\noindent%         create a vertical offset to previous material
-	\textsc{\textbf{\\Bemerkung:}}% or \textbf, \textit, ...
+	\textsc{\textbf{\\Bemerkung.}}% or \textbf, \textit, ...
 	\indent
 }{\par\bigskip}  %          create a vertical offset to following material
 
@@ -272,6 +272,8 @@ date=short                % Datumsformat
 	\cfoot{}
 	\rfoot{\thepage}
 }
+
+\crefname{section}{Abschnitt}{Abschnitt}
 
 \begin{document}
 	\newgeometry{bottom=1cm,top=1cm,left=1cm,right=1cm}
@@ -378,7 +380,7 @@ date=short                % Datumsformat
 	
 	
 	%sebastians teil
-	\section{Gauss Quadratur}\label{gauss}
+	\section{Gau\ss-Laguerre Quadratur}\label{gauss}
 	Zun\"achst  sei Bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
 		Es existiert eine eindeutig bestimmte Folge $(q_n)$ von Polynomen der Form
@@ -449,7 +451,7 @@ date=short                % Datumsformat
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e2.png}
 		\end{center}
-		\caption{Vergleich von ..}
+		\caption{Vergleich der Integrationsmethoden aus \cref{gauss,trapez}}
 		\label{fig:vergleich}	
 	\end{figure}
 
@@ -483,14 +485,15 @@ date=short                % Datumsformat
 	\end{figure}
 
 \begin{bemerkung}
-	Um mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen wird wegen \autocite[vgl.][278]{ana2}
+	Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann wegen \autocite[vgl.][278]{ana2}
 	\begin{align*}
 		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
 	\end{align*}
-	eine neue Funktion $g(x) = f(x+a)\omega(x+a)\omega^{-1}(x)$ definiert. Es gilt:
+	eine neue Funktion $g$ mit $g(x) \coloneqq f(x+a)\omega(x+a)\omega^{-1}(x)$ definiert werden f\"ur die gilt:
 	\begin{align*}
-		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}g(x)\omega(x)dx \approx  \sum_{i=1}^{n}w_ig(x_i)
+		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}g(x)\omega(x)dx \approx  \sum_{i=1}^{n}w_ig(x_i).
 	\end{align*}
+	Weiters k\"onnen wegen $\int_{a}^{b}f(x)\omega(x)dx = \int_{a}^{c}f(x)\omega(x)dx - \int_{b}^{c}f(x)\omega(x)dx$ f\"ur $0\leq a\leq b\leq c$ auch Integrale der Form $\int_{a}^{b}f(x)\omega(x)dx$ berechnet werden.
 \end{bemerkung}
 	
 	
@@ -514,11 +517,11 @@ date=short                % Datumsformat
 	Wie in \cref{fig:gewichtsfunktionen-vergleich} zu sehen ist, geht der Fehler f\"ur $e^{-x^2}$ wesentlich schneller gegen Null als bei $e^{-x}$. Trotzdem bleibt die Konvergenz langsamer als bei der in \cref{gauss} beschriebenen Gau\ss -Quadratur (\cref{fig:gauss-vs-besseretrapez}).
 
 
-	\section{Gauss–Hermite Quadratur?}
-	  Um auch uneigentliche Integrale von $-\infty$ bis $\infty$ zu berechnen, kann als Gewichtsfunktion $e^{-x^2}$ verwendet werden. Es gilt:
-	  \begin{align*}
-	  	\int_{-\infty}^{\infty}e^{-x^2}f(x)dx \approx \sum_{i=1}^{n}w_if(x_i)
-	  \end{align*}
+	%\section{Gauss–Hermite Quadratur?}
+	 % Um auch uneigentliche Integrale von $-\infty$ bis $\infty$ zu berechnen, kann als Gewichtsfunktion $e^{-x^2}$ verwendet werden. Es gilt:
+	 % \begin{align*}
+	%  	\int_{-\infty}^{\infty}e^{-x^2}f(x)dx \approx \sum_{i=1}^{n}w_if(x_i)
+	 % \end{align*}
 	%literatur,abbildungsverzeichnis etc.
 	\newpage
 	\printbibliography
