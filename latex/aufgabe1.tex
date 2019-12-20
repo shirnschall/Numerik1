@@ -251,9 +251,9 @@ date=short                % Datumsformat
 
 \newenvironment{bemerkung}{%      define a custom environment
 	\bigskip\noindent%         create a vertical offset to previous material
-	\textsc{\textbf{\Bemerkung}}% or \textbf, \textit, ...
+	\textsc{\textbf{\\Bemerkung:}}% or \textbf, \textit, ...
 	\indent
-}{\qed\par\bigskip}  %          create a vertical offset to following material
+}{\par\bigskip}  %          create a vertical offset to following material
 
 \newcommand{\mpar}[1]{\paragraph*{#1}\mbox{}\par}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
@@ -481,6 +481,17 @@ date=short                % Datumsformat
 		\end{subfigure}
 		\caption{Von T abh\"angiger Fehler}
 	\end{figure}
+
+\begin{bemerkung}
+	Um mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen wird wegen \autocite[vgl.][278]{ana2}
+	\begin{align*}
+		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
+	\end{align*}
+	eine neue Funktion $g(x) = f(x+a)\omega(x+a)\omega^{-1}(x)$ definiert. Es gilt:
+	\begin{align*}
+		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}g(x)\omega(x)dx \approx  \sum_{i=1}^{n}w_ig(x_i)
+	\end{align*}
+\end{bemerkung}
 	
 	
 	
