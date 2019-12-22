@@ -62,10 +62,10 @@ date=short                % Datumsformat
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 %
-\rhead{ \rightmark}
+\rhead{ }
 %\rhead[re]{\textbf{\nouppercase{\leftmark}}}
 \chead{}
-\lhead{}
+\lhead{\leftmark}
 %%
 \lfoot{Sebastian Hirnschall, Rafael Dorigo}
 \cfoot{}
@@ -79,10 +79,10 @@ date=short                % Datumsformat
 \fancypagestyle{general}
 {
 	\fancyhf{}
-	\rhead{\rightmark}
+	\rhead{}
 	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
 	\chead{}
-	\lhead{}
+	\lhead{\leftmark}
 	\lfoot{ Rafael Dorigo, Sebastian Hirnschall}
 	\cfoot{}
 	\rfoot{\thepage}
@@ -264,10 +264,10 @@ date=short                % Datumsformat
 \fancypagestyle{firststyle}
 {
 	\fancyhf{}
-	\rhead{\rightmark}
+	\rhead{}
 	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
 	\chead{}
-	\lhead{}
+	\lhead{\leftmark}
 	\lfoot{ Sebastian Hirnschall}
 	\cfoot{}
 	\rfoot{\thepage}
@@ -317,9 +317,9 @@ date=short                % Datumsformat
 	\item[a)] 	Abschneiden des unbeschränkten Intervalls und Anwendung einer Quadraturformel für ein beschränktes Intervall [0,T] für T > 0
 	\item[b)] 	Anwendung einer Gaußquadratur für die Gewichtsfunktion w(x) = exp(-x) 
 	\end{itemize}
-	\section{Abschneiden eines Intervalls}\label{trapez}
+	\section{Summierte Trapezformel auf einem endlichen Intervall}\label{trapez}
 	\begin{mylemma}\label{lemma1.1}
-	Sei $f$ : [0,$\infty$) $\rightarrow$ $\R$ eine beschränkte Funktion. Desweiteren definieren wir für eine Menge M $\subset$ [0,$\infty$) das gewichtete Integral von $f$ mit
+	Sei $f$ : [0,$\infty$) $\rightarrow$ $\R$ eine beschränkte Funktion. Des weiteren definieren wir für eine Menge M $\subset$ [0,$\infty$) das gewichtete Integral von $f$ mit
 	\begin{align*}
 		Q_M(f) := \int_{M}^{}{f(x)exp(-x)dx}
 	\end{align*}
@@ -327,7 +327,7 @@ date=short                % Datumsformat
 	\begin{align}
 		|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h \label{eq:trapez-fehler}
 	\end{align}
-	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Desweiteren wir vorausgesetzt, dass f hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung der Funktion beschränkt ist.
+	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Des weiteren wir vorausgesetzt, dass f hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung der Funktion beschränkt ist.
 	\end{mylemma}
 	\begin{myproof}
 		Mit \autocite[vgl.][40-41]{skript}: \\
@@ -394,7 +394,7 @@ date=short                % Datumsformat
 	
 	%sebastians teil
 	\section{Gau\ss-Laguerre Quadratur}\label{gauss}
-	Zun\"achst  sei Bemerkt, dass\autocite[45]{skript}:
+	Zun\"achst  sei bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
 		Es existiert eine eindeutig bestimmte Folge $(q_n)$ von Polynomen der Form
 		\begin{align*}
@@ -446,8 +446,8 @@ date=short                % Datumsformat
 	\end{myproof}
 	\newpage
 	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
-	\lstinputlisting[language=c,firstline=16,lastline=27,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
-	\lstinputlisting[language=c,firstline=13,lastline=49,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
+	\lstinputlisting[language=c,firstline=17,lastline=20,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
+	\lstinputlisting[language=c,firstline=13,lastline=50,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
 	
 	\begin{figure}[H]
 		\begin{center}
@@ -458,8 +458,8 @@ date=short                % Datumsformat
 	\end{figure}
 	
 	\newpage
-	\section{Vergleich der Integrationsmethoden aus \cref{gauss,trapez}}
-	Bei der summierten Trapezformel wurde für jedes n ein optimales T gewählt wie in \cref{fig:parameterth}
+	\section{Vergleich der Methoden aus \cref{trapez,gauss}}
+	%Bei der summierten Trapezformel wurde für jedes n ein optimales T gewählt wie in \cref{fig:parameterth}
 	\begin{figure}[H]
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e2.png}
