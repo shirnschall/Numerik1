@@ -18,8 +18,8 @@ def sumtrapez(t,h):
     fs=f(xs)
     return h/2*(1+2*sum(fs[1:-1])+fs[-1]) # 1=f(0) stetig fortgesetzt
 
-n, t = symbols('n,t')
-n = np.arange(1,11,1)
+#n, t = symbols('n,t')
+#n = np.arange(1,100,1)
 
 T = 100
 

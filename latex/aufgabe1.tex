@@ -344,28 +344,41 @@ date=short                % Datumsformat
 	\end{myproof}
 	\newpage
 	\begin{mybeispiel}
-		Es wird T fix gewählt und der Fehler in Abhängigkeit von h geplottet mit der Funktion $f(x) := \frac{sin(x)}{x}$
+		Es wird T fix gewählt und der Fehler in Abhängigkeit von h geplottet
 		\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem T]{fehlerTsinx.py}
 		\begin{figure}[H]
-			\begin{center}
-				\includegraphics[width=0.8\textwidth]{FehlerplotT.png}
-			\end{center}
-			\caption{Fehlerplot in Abhängigkeit von h.}
-			\label{fig:fehlerplott}	
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=\linewidth]{FehlerplotTsinx.png}
+				\subcaption{$f(x) := \frac{sin(x)}{x}$} \label{fig:fehlerplottsinx}
+			\end{subfigure}
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=\linewidth]{FehlerplotTexp.png}
+				\subcaption{$f(x) := \frac{1}{e^{x}+7}$} \label{fig:fehlerplottexp}
+			\end{subfigure}
+			\caption{Fehlerplot abhängig von h.}
+			\label{fig:fehlerplott}
 		\end{figure}
 		\newpage
 		Um alles übersichtlicher zu machen, wird nun h fix gehalten und T variiert. 
 		\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem h]{fehlerhsinx.py} 	
 		\begin{figure}[H]
-			\begin{center}
-				\includegraphics[width=0.8\textwidth]{Fehlerploth.png}
-			\end{center}
-			\caption{Fehlerplot in Abhängigkeit von T.}
-			\label{fig:fehlerploth}	
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=\linewidth]{Fehlerplothsinx.png}
+				\subcaption{$f(x) := \frac{sin(x)}{x}$} \label{fig:fehlerplothsinx}
+			\end{subfigure}
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=\linewidth]{Fehlerplothexp.png}
+				\subcaption{$f(x) := \frac{1}{e^{x}+7}$} \label{fig:fehlerplothexp}
+			\end{subfigure}
+			\caption{Fehlerplot abhängig von T.}
+			\label{fig:fehlerploth}
 		\end{figure}
 		\newpage
-		Man sieht nun aus \cref{fig:fehlerplott}, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty]$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden. Dasselbe passiert auch in \cref{fig:fehlerploth}, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Die beiden Plot ändern sich auch bei verschieden Funktionen nicht, das einzige was passiert, ist dass sich der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt.  \\ \newline
-		\textbf{Bemerkung}: Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. D. h. bei einer gegebenen Anzahl an Funktionsauswertungen kann man T bzw. h wie im folgenden Plot gewählt. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ gelten.
+		Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty]$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden, also man ist zum Fehler von T gelangt. Dasselbe passiert auch in \cref{fig:fehlerploth}, wobei die Vergleichsfunktion aus ästhetischen Gründen weggelassen wurde, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Bei verschieden Funktionen ist das einzige was passiert, dass sich der Integrationsfehler ändert und der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt, also der Graph ändert sich nicht.  
+		\begin{bemerkung}
+			Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. D. h. bei einer gegebenen Anzahl an Funktionsauswertungen kann man T bzw. h wie im folgenden Plot gewählt. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ gelten.
+		\end{bemerkung}
+		
 		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=0.8\textwidth]{parameterth.png}
