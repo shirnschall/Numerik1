@@ -447,7 +447,7 @@ date=short                % Datumsformat
 	\newpage
 	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
 	\lstinputlisting[language=c,firstline=17,lastline=20,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
-	\lstinputlisting[language=c,firstline=13,lastline=50,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
+	\lstinputlisting[language=c,firstline=13,lastline=49,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
 	
 	\begin{figure}[H]
 		\begin{center}
@@ -460,6 +460,7 @@ date=short                % Datumsformat
 	\newpage
 	\section{Vergleich der Methoden aus \cref{trapez,gauss}}
 	%Bei der summierten Trapezformel wurde für jedes n ein optimales T gewählt wie in \cref{fig:parameterth}
+	F\"ur die Funktionen $f:[0,\infty)\mapsto \mathbb{R},f(x)=\frac{1}{e^x+7}$ und $\omega:[0,\infty)\mapsto \mathbb{R},\omega(x)=e^{-x}$, konvergiert die Gauss-Laguerre Quadratur wesentlich schneller gegen $\int_{0}^{\infty}f(x)\omega(x)dx$ als die in \cref{trapez} beschriebene Integrationsmethode.(\cref{fig:vergleich})
 	\begin{figure}[H]
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e2.png}
@@ -470,11 +471,11 @@ date=short                % Datumsformat
 
 
 	\subsection{Beschleunigung der Konvergenz}
-	Da f\"ur Funktionen $f,g$ die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
+	Da f\"ur Funktionen $f,g$, die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
 	\begin{align*}
-		f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx
+		f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx,
 	\end{align*}
-	Ergibt sich f\"ur den Fehler $C_1\epsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktionen $\omega : f(x)\omega(x) \leq f(x)e^{-x}, x \in [T,\infty)$
+	ergibt sich f\"ur den Fehler $C_1\varepsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktionen $\omega : f(x)\omega(x) \leq f(x)e^{-x}, x \in [T,\infty)$
 	\begin{align*}
 		\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} \geq \\
 		 \abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
@@ -494,11 +495,11 @@ date=short                % Datumsformat
 			\includegraphics[width=\linewidth]{../plots/aufgabe-e-vergleich-integral.png}
 			\subcaption{Von T abh\"angiger Fehler f\"ur verschiedene Gewichtsfunktionen}\label{fig:f-vergleich-int}
 		\end{subfigure}
-		\caption{Von T abh\"angiger Fehler}
+		\caption{Vergleich verschiedener Gewichtsfunktionen}
 	\end{figure}
 
 \begin{bemerkung}
-	Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann wegen \autocite[vgl.][278]{ana2}
+	Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann f\"ur Funktionen $f,\omega:\int_{0}^{\infty}f(x)\omega(x)dx<\infty$ wegen \autocite[vgl.][278]{ana2}
 	\begin{align*}
 		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
 	\end{align*}
@@ -539,7 +540,7 @@ date=short                % Datumsformat
 	\newpage
 	\printbibliography
 	\listoffigures
-	\listoftables
+	\thispagestyle{firststyle}
 	
 \end{document}
 
