@@ -15,6 +15,7 @@ hs = 1/2**np.arange(15)
 for h in hs:
     errors.append(abs(np.pi/4-sumtrapez(T,h)))
 plt.loglog(hs,errors)
+plt.loglog(hs,hs**2)
 plt.grid(which='major', linewidth=0.5)
 plt.xlabel('h', size='large')
 plt.ylabel('Fehler', size='large')
