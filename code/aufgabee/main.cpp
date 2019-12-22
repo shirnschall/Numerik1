@@ -7,21 +7,18 @@ double h(double);
 
 int main()
 {
-    cout << f(1) << endl;
+    cout << f(0) << endl;
     return 0;
 }
 
 double f(double x)
 {
-    if(x == 0)
-        return 1;
-    else
-        return (sin(x)/x)*exp(-x);
+    return 1/(exp(x)+7)*exp(-x);
 }
 
 double h(double n)
 {
-    return solve
+    return solve(n+2=5);
 }
 
 
