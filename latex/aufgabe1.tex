@@ -522,29 +522,29 @@ date=short                % Datumsformat
 		\end{align*}
 	\end{mytheorem}
 	\begin{myproof}
-		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. Da 
+		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
 		\begin{align*}
 			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
 			 \int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}cdx - d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
-			 \int_{\xi_{i-1}}^{\xi_i}f(x) + cdx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+c+f(\xi_i)+c}{2}\right) = \tau(f+c,\{\xi_{i-1},\xi_i\})
+			 \int_{\xi_{i-1}}^{\xi_i}f(x) + cdx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+c+f(\xi_i)+c}{2}\right) = \tau(f+c,\{\xi_{i-1},\xi_i\}).
 		\end{align*}
-		kann $min(f(\xi_{i-1}),f(\xi_i)) = 0$ vorausgesetzt werden.\\
-		F\"ur $s(x)\coloneqq f(\xi_{i}) + \frac{f(\xi_{i-1}) - f(\xi_{i})}{\xi_{i-1} - \xi_{i}}x$ gilt weiters:
+		Es kann also $min(f(\xi_{i-1}),f(\xi_{i})) = 0$ vorausgesetzt werden. F\"ur $s(x)\coloneqq f(\xi_{i}) + \frac{f(\xi_{i-1}) - f(\xi_{i})}{\xi_{i-1} - \xi_{i}}x$ gilt weiters:
 		\begin{align*}
 				\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
 				\int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}s(x)dx - d(\xi_{i-1},\xi_i)\frac{s(\xi_{i-1})+s(\xi_i)}{2} - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
 				\int_{\xi_{i-1}}^{\xi_i}f(x) + s(x)dx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+s(\xi_{i-1})+f(\xi_i)+s(\xi_i)}{2}\right) = \tau(f+s,\{\xi_{i-1},\xi_i\})
-		\end{align*} und 
+		\end{align*} wobei 
 		\begin{align*}
-			\frac{d^2}{dx^2} (f(x) + s(x)) = \frac{d^2}{dx^2}f(x) + \frac{d^2}{dx^2}s(x) = \frac{d^2}{dx^2}f(x)
+			\frac{d^2}{dx^2} (f(x) + s(x) + c) = \frac{d^2}{dx^2}f(x) + \frac{d^2}{dx^2}s(x) + \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x)
 		\end{align*}
-		Es existiert also f\"ur jedes $f$  eine Funktion  $\hat{f}:\hat{f}(\xi_{i-1}) = \hat{f}(\xi_{i}) = 0,\frac{d^2}{dx^2}\hat{f} = \frac{d^2}{dx^2}f(x),\int\hat{f}(x)dx = \tau(f,\{\xi_{i-1},\xi_i\})$ vorausgesetzt werden und es folgt:
+		Es existiert also f\"ur jedes $f$  ein  $\hat{f}:\hat{f}(\xi_{i-1}) = \hat{f}(\xi_{i}) = 0,\frac{d^2}{dx^2}\hat{f} = \frac{d^2}{dx^2}f(x),\int\hat{f}(x)dx = \tau(f,\{\xi_{i-1},\xi_i\})$:
 		\begin{align*}
-			\int\int \frac{d^2}{dx^2}f(x)dx = \hat{f}(x) \geq \hat{g}(x) = \int\int \frac{d^2}{dx^2}g(x)dx
+			\int\int \frac{d^2}{dx^2}f(x)dx = \hat{f}(x) \geq \hat{g}(x) = \int\int \frac{d^2}{dx^2}g(x)dx\\
+			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
 		\end{align*}
 		und somit
 		\begin{align*}
-			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
+			\tau(f,Z)\geq\tau(g,Z)
 		\end{align*}
 			
 		\end{myproof}
