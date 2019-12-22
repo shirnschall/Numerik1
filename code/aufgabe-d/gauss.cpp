@@ -22,7 +22,6 @@ Gauss::Gauss(int n):n(n) {
     ces = ComplexEigenSolver<MatrixXcd>(T);
     eigenvectors = ces.eigenvectors();
     nodes = T.eigenvalues();
-    //std::cout << T << std::endl;
 }
 
 double Gauss::norm(int i){
