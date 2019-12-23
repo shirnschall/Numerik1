@@ -385,18 +385,18 @@ date=short                % Datumsformat
 		\caption{Vergleich verschiedener Gewichtsfunktionen}
 	\end{figure}
 
-	Wird $h=\frac{T}{n}$ fixiert, bleibt f\"ur $T\to \infty$ der von $n$ abh\"angige Fehler \"uber. 
+	F\"ur eine Zerlegung $Z = \{\xi_j:j=0,\dots,n(Z):\xi_j = jh+\xi_0\} , h\in \mathbb{R}$ von $[0,T]$ bleibt f\"ur $T\to\infty$ nur der von $h$ abh\"angige Fehler.
 	\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem h]{fehlerhsinx.py} 	
 	\begin{figure}[H]
 		\begin{subfigure}[t]{0.5\textwidth}
 			\includegraphics[width=\linewidth]{Fehlerplothsinx.png}
-			\subcaption{$f(x) := \frac{sin(x)}{x}$} \label{fig:fehlerplothsinx}
+			\subcaption{$f(x) := \frac{sin(x)}{x}e^{-x}$} \label{fig:fehlerplothsinx}
 		\end{subfigure}
 		\begin{subfigure}[t]{0.5\textwidth}
 			\includegraphics[width=\linewidth]{Fehlerplothexp.png}
-			\subcaption{$f(x) := \frac{1}{e^{x}+7}$} \label{fig:fehlerplothexp}
+			\subcaption{$f(x) := \frac{1}{e^{x}+7}e^{-x}$} \label{fig:fehlerplothexp}
 		\end{subfigure}
-		\caption{Fehlerplot abhängig von T.}
+		\caption{Fehler abhängig von T.}
 		\label{fig:fehlerploth}
 	\end{figure}
 	
@@ -412,7 +412,7 @@ date=short                % Datumsformat
 		\end{align*}
 	\end{mytheorem}
 	\begin{myproof}
-		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ und  $\tau(f,\{\xi_{i-1},\xi_{i},\xi_{i+1}\}) = \tau(f,\{\xi_{i-1},\xi_{i}\}) + \tau(f,\{\xi_{i},\xi_{i+1}\})$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
+		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$, gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
 		\begin{gather*}
 		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
 		\int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}cdx - d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
@@ -554,7 +554,7 @@ date=short                % Datumsformat
 	\end{figure}
 
 	\begin{bemerkung}
-		Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann f\"ur Funktionen $f,\omega:\int_{0}^{\infty}f(x)\omega(x)dx<\infty$ wegen \autocite[vgl.][278]{ana2}
+		Um, wie in \cref{fig:f-vergleich-int} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann f\"ur Funktionen $f,\omega:\int_{0}^{\infty}f(x)\omega(x)dx<\infty$ wegen \autocite[vgl.][278]{ana2}
 		\begin{align*}
 		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
 		\end{align*}
