@@ -374,7 +374,7 @@ date=short                % Datumsformat
 			\label{fig:fehlerploth}
 		\end{figure}
 		\newpage
-		Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty]$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden, also man ist zum Fehler von T gelangt. Dasselbe passiert auch in \cref{fig:fehlerploth}, wobei die Vergleichsfunktion aus ästhetischen Gründen weggelassen wurde, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Bei verschieden Funktionen ist das einzige was passiert, dass sich der Integrationsfehler ändert und der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt, also der Graph ändert sich nicht.  
+		Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty)$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden, also man ist zum Fehler von T gelangt. Dasselbe passiert auch in \cref{fig:fehlerploth}, wobei die Vergleichsfunktion aus ästhetischen Gründen weggelassen wurde, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Bei verschieden Funktionen ist das einzige was passiert, dass sich der Integrationsfehler ändert und der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt, also der Graph ändert sich nicht.  
 		\begin{bemerkung}
 			Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ erfüllt sein.
 		\end{bemerkung}
@@ -383,7 +383,7 @@ date=short                % Datumsformat
 			\begin{center}
 				\includegraphics[width=0.8\textwidth]{parameterth.png}
 			\end{center}
-			\caption{Parameterwahl bei fixem n.}
+			\caption{Fehler abhängig von n.}
 			\label{fig:parameterth}	
 		\end{figure}
 		 
