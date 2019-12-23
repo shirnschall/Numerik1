@@ -191,7 +191,7 @@ date=short                % Datumsformat
 	\textsc{\textbf{Satz} \themytheoremctr}% or \textbf, \textit, ...
 	\newline\noindent
 }{\par\bigskip}  %          create a vertical offset to following material
-\numberwithin{mytheoremctr}{section}
+\numberwithin{mytheoremctr}{subsection}
 
 \crefname{mytheoremctr}{Satz}{Satz}
 
@@ -207,7 +207,7 @@ date=short                % Datumsformat
 	\textsc{\textbf{Korollar} \themykorollarctr}% or \textbf, \textit, ...
 	\newline\noindent
 }{\par\bigskip}  %          create a vertical offset to following material
-\numberwithin{mykorollarctr}{section}
+\numberwithin{mykorollarctr}{subsection}
 
 \crefname{mykorollarctr}{Korollar}{Korollar}
 
@@ -223,7 +223,7 @@ date=short                % Datumsformat
 	\textsc{\textbf{Lemma} \themylemmactr}% or \textbf, \textit, ...
 	\newline\noindent
 }{\par\bigskip}  %          create a vertical offset to following material
-\numberwithin{mylemmactr}{section}
+\numberwithin{mylemmactr}{subsection}
 
 \crefname{mylemmactr}{Lemma}{Lemma}
 
@@ -239,7 +239,7 @@ date=short                % Datumsformat
 	\textsc{\textbf{Beispiel} \themybeispielctr}% or \textbf, \textit, ...
 	\newline\noindent
 }{\par\bigskip}  %          create a vertical offset to following material
-\numberwithin{mybeispielctr}{section}
+\numberwithin{mybeispielctr}{subsection}
 
 \crefname{mybeispielctr}{Beispiel}{Beispiel}
 
@@ -311,12 +311,10 @@ date=short                % Datumsformat
 	\thispagestyle{general}
 	\newpage
 
-	\noindent
-	Um exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) zu integrieren, bieten sich zwei Möglichkeiten an
-	\begin{itemize}		
-	\item[a)] 	Abschneiden des unbeschränkten Intervalls und Anwendung einer Quadraturformel für ein beschränktes Intervall [0,T] für T > 0
-	\item[b)] 	Anwendung einer Gaußquadratur für die Gewichtsfunktion w(x) = exp(-x) 
-	\end{itemize}
+	\section{Einleitung}
+	Um exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) zu integrieren, bieten sich zwei Möglichkeiten an. Das Abschneiden des unbeschränkten Intervalls und Anwendung einer Quadraturformel für ein beschränktes Intervall $[0,T]$ für $T > 0$ und die Anwendung einer Gaußquadratur für die Gewichtsfunktion $w(x) = e^{-x}$.
+	
+	\newpage
 	\section{Summierte Trapezformel auf einem endlichen Intervall}\label{trapez}
 	\begin{mylemma}\label{lemma1.1}
 	Sei $f$ : [0,$\infty$) $\rightarrow$ $\R$ eine beschränkte Funktion. Des weiteren definieren wir für eine Menge M $\subset$ [0,$\infty$) das gewichtete Integral von $f$ mit
@@ -327,7 +325,7 @@ date=short                % Datumsformat
 	\begin{align}
 		|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h \label{eq:trapez-fehler}
 	\end{align}
-	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Des weiteren wir vorausgesetzt, dass $f$ hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung von $f$ beschränkt ist.
+	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Des weiteren wir vorausgesetzt, dass f hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung der Funktion beschränkt ist.
 	\end{mylemma}
 	\begin{myproof}
 		Mit \autocite[vgl.][40-41]{skript}: \\
@@ -342,38 +340,8 @@ date=short                % Datumsformat
 			& = C_1\varepsilon_T + C_2T\varepsilon_h 
 		\end{align*}
 	\end{myproof}
-	
 	\begin{mybeispiel}
-		Es wird T fix gewählt und der Fehler in Abhängigkeit von h geplottet
-		\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem T]{fehlerTsinx.py}
-		\begin{figure}[H]
-			\begin{subfigure}[t]{0.5\textwidth}
-				\includegraphics[width=\linewidth]{FehlerplotTsinx.png}
-				\subcaption{$f(x) := \frac{sin(x)}{x}$} \label{fig:fehlerplottsinx}
-			\end{subfigure}
-			\begin{subfigure}[t]{0.5\textwidth}
-				\includegraphics[width=\linewidth]{FehlerplotTexp.png}
-				\subcaption{$f(x) := \frac{1}{e^{x}+7}$} \label{fig:fehlerplottexp}
-			\end{subfigure}
-			\caption{Fehlerplot abhängig von h.}
-			\label{fig:fehlerplott}
-		\end{figure}
-		
-		Um alles übersichtlicher zu machen, wird nun h fix gehalten und T variiert. 
-		\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem h]{fehlerhsinx.py} 	
-		\begin{figure}[H]
-			\begin{subfigure}[t]{0.5\textwidth}
-				\includegraphics[width=\linewidth]{Fehlerplothsinx.png}
-				\subcaption{$f(x) := \frac{sin(x)}{x}$} \label{fig:fehlerplothsinx}
-			\end{subfigure}
-			\begin{subfigure}[t]{0.5\textwidth}
-				\includegraphics[width=\linewidth]{Fehlerplothexp.png}
-				\subcaption{$f(x) := \frac{1}{e^{x}+7}$} \label{fig:fehlerplothexp}
-			\end{subfigure}
-			\caption{Fehlerplot abhängig von T.}
-			\label{fig:fehlerploth}
-		\end{figure}
-		
+		\newpage
 		Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty)$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden, also man ist zum Fehler von T gelangt. Dasselbe passiert auch in \cref{fig:fehlerploth}, wobei die Vergleichsfunktion aus ästhetischen Gründen weggelassen wurde, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Bei verschieden Funktionen ist das einzige was passiert, dass sich der Integrationsfehler ändert und der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt, also der Graph ändert sich nicht.  
 		\begin{bemerkung}
 			Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ erfüllt sein.
@@ -389,10 +357,108 @@ date=short                % Datumsformat
 		 
 	\end{mybeispiel}
 	\newpage
+		\subsection{Von T abh\"angiger Fehler}
+	Da f\"ur Funktionen $f,g$, die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
+	\begin{align*}
+	f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx,
+	\end{align*}
+	ergibt sich f\"ur den Fehler $C_1\varepsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktionen $\omega : f(x)\omega(x) \leq f(x)e^{-x}, x \in [T,\infty)$
+	\begin{align*}
+	\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} \geq \\
+	\abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
+	\end{align*}	
+	Der bei \cref{trapez} durch das Abschneiden des Intervalls $[0,\infty)$ entstehende Fehler ist also stark von der Wahl der Gewichtsfunktion abh\"angig.(\cref{fig:f-vergleich-int}) 
+	Durch die Wahl einer geeigneten Gewichtsfunktion kann die Konvergenz des Integrationsverfahrens also beschleunigt werden.
 	
+	
+	\begin{figure}[H]
+		\begin{subfigure}[t]{0.5\textwidth}
+			
+			\includegraphics[width=\linewidth]{../plots/aufgabe-e-vergleich.png}
+			\subcaption{$f(x)\omega(x)$ f\"ur verschiedene $\omega(x)$}\label{fig:f-vergleich}
+			
+		\end{subfigure}
+		\begin{subfigure}[t]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{../plots/aufgabe-e-vergleich-integral.png}
+			\subcaption{Von T abh\"angiger Fehler f\"ur verschiedene Gewichtsfunktionen}\label{fig:f-vergleich-int}
+		\end{subfigure}
+		\caption{Vergleich verschiedener Gewichtsfunktionen}
+	\end{figure}
+
+	Wird $h=\frac{T}{n}$ fix gehalten und $T$ variiert, bleibt f\"ur $T\to \infty$ der von $n$ abh\"angige Fehler \"uber. 
+	\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem h]{fehlerhsinx.py} 	
+	\begin{figure}[H]
+		\begin{subfigure}[t]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{Fehlerplothsinx.png}
+			\subcaption{$f(x) := \frac{sin(x)}{x}$} \label{fig:fehlerplothsinx}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{Fehlerplothexp.png}
+			\subcaption{$f(x) := \frac{1}{e^{x}+7}$} \label{fig:fehlerplothexp}
+		\end{subfigure}
+		\caption{Fehlerplot abhängig von T.}
+		\label{fig:fehlerploth}
+	\end{figure}
+	
+	\subsection{Von n abh\"angiger Fehler}
+	\begin{mytheorem}
+		F\"ur auf einem Intervall $[a,b]:0\leq a< b$ Riemann-integrierbare Funktionen $f,g\in C^2:[a,b]\mapsto \mathbb{R}$ ist der von n abh\"angige Fehler $\tau$ durch
+		\begin{align*}
+		\tau:\mathbb{R}\mapsto\mathbb{R},\tau(f,Z) = \sum_{i=1}^{n(Z)}\left(\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right)
+		\end{align*}
+		gegeben. F\"ur ein Intervall $[u,v]:a\leq u< v\leq b$ und eine Zerlegung $Z$ von $[u,v]$:
+		\begin{align*}
+		|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]\Rightarrow \tau(f,Z)\geq\tau(g,Z).
+		\end{align*}
+	\end{mytheorem}
+	\begin{myproof}
+		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
+		\begin{gather*}
+		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
+		\int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}cdx - d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
+		\int_{\xi_{i-1}}^{\xi_i}f(x) + cdx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+c+f(\xi_i)+c}{2}\right) = \tau(f+c,\{\xi_{i-1},\xi_i\}).
+		\end{gather*}
+		Es kann also $min(f(\xi_{i-1}),f(\xi_{i})) = 0$ vorausgesetzt werden. F\"ur $s(x)\coloneqq f(\xi_{i}) + \frac{f(\xi_{i-1}) - f(\xi_{i})}{\xi_{i-1} - \xi_{i}}x$ gilt weiters:
+		\begin{gather*}
+		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
+		\int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}s(x)dx - d(\xi_{i-1},\xi_i)\frac{s(\xi_{i-1})+s(\xi_i)}{2} - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
+		\int_{\xi_{i-1}}^{\xi_i}f(x) + s(x)dx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+s(\xi_{i-1})+f(\xi_i)+s(\xi_i)}{2}\right) = \tau(f+s,\{\xi_{i-1},\xi_i\})
+		\end{gather*} wobei 
+		\begin{align*}
+		\frac{d^2}{dx^2} (f(x) + s(x) + c) = \frac{d^2}{dx^2}f(x) + \frac{d^2}{dx^2}s(x) + \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x)
+		\end{align*}
+		Es existiert also f\"ur jedes $f$  ein  $\hat{f}:\hat{f}(\xi_{i-1}) = \hat{f}(\xi_{i}) = 0,\frac{d^2}{dx^2}\hat{f} = \frac{d^2}{dx^2}f(x),\int\hat{f}(x)dx = \tau(f,\{\xi_{i-1},\xi_i\})$:
+		\begin{align*}
+		\int\int \frac{d^2}{dx^2}f(x)d^2x = \hat{f}(x) &\geq \hat{g}(x) = \int\int \frac{d^2}{dx^2}g(x)d^2x\\
+		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx&\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
+		\end{align*}
+		und somit
+		\begin{align*}
+		\tau(f,Z)\geq\tau(g,Z)
+		\end{align*}
+		
+	\end{myproof}
+	
+	
+	
+	Wird nun $T$ fix gehalten und $h$ variiert, bleibt f\"ur $h\to 0$ der von $T$ abh\"angige Fehler \"uber. 
+	\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem T]{fehlerTsinx.py}
+	\begin{figure}[H]
+		\begin{subfigure}[t]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{FehlerplotTsinx.png}
+			\subcaption{$f(x) := \frac{sin(x)}{x}e^{-x}$} \label{fig:fehlerplottsinx}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{FehlerplotTexp.png}
+			\subcaption{$f(x) := \frac{1}{e^{x}+7}e^{-x}$} \label{fig:fehlerplottexp}
+		\end{subfigure}
+		\caption{Fehlerplot abhängig von h.}
+		\label{fig:fehlerplott}
+	\end{figure}
 	
 	
 	%sebastians teil
+	\newpage
 	\section{Gau\ss-Laguerre Quadratur}\label{gauss}
 	Zun\"achst  sei bemerkt, dass\autocite[45]{skript}:
 	\begin{mykorollar}\label{4.15}
@@ -442,38 +508,7 @@ date=short                % Datumsformat
 		wobei $(v_j)_1$ die 1.Komponente eines Eigenvektors $v_j \in \mathbb{R}^{n+1}\setminus \{0\}$ zum Eigenwert $x_j$ ist.
 	\end{mytheorem}
 	\begin{myproof}
-		Durch die Gewichtsfunktion $w(x) = exp(-x)$ haben die Polynome und die Matrix folgende Form:
-		\begin{align*}
-			p_0(x) &\coloneqq 1\\
-			p_1(x) &\coloneqq (x-1) p_0 = x-1 \\
-			p_{n+1}(x) &\coloneqq (x-2n-1)p_n(x)-n p_{n-1}(x) \quad \text{f\"ur}  \quad n\geq 1
-		\end{align*} 
-		und 
-		\begin{align*}
-			T_n\coloneqq 
-			\begin{pmatrix}
-			1 		     & 	-1			 	&  				  & &\\
-			-1		 	 & 3				& 			   	  & & \\
-			&   		 & \ddots 		    & \ddots 			&\\
-			&					& \ddots 	&					& -n+1\\
-			&		&			&-n+1 		&2n-1				&\\
-			\end{pmatrix}
-		\end{align*}
-		Mit vollständiger Induktion wird gezeigt, dass $T_nv_{k,n} = x_kv_{k,n}$ gilt, mit dem Eigenvektor\\
-		$v_{k,n} := (\tau_0,\tau_1p_1(x_k),\ldots,\tau_{n-1}p_{n-1}(x_k))^{T}$ und $\tau_j = \frac{(-1)^{j}}{j!}$ zum Eigenwert $x_k$.
-		\begin{itemize}
-			\item[I.V.] 
-			Es gilt $T_{n-1}v_{k,n-1} = x_kv_{k,n-1}$
-			\item[I.A.] 
-			Mit n = 1 folgt unmittelbar
-			\begin{align*}
-				T_1v_{k,1} = (1)(\tau_0) = \tau_0 = x_k\tau_0 \Leftrightarrow T_1v_{k,1} - x_k\tau_0 = \tau_0 - x_k\tau_0 = 1 - x_k = 0
-			\end{align*}
-			Also ist der Eigenwert $x_k = 1$ was bei genauerer Betrachtung auch die Nullstelle des Orthogonalpolynoms $p_1(x_k) = x_k - 1 = 0$ ist. 
-			\item[I.S.] $n \rightarrow n + 1$
-			
-		\end{itemize}
-		 
+		
 	\end{myproof}
 	\newpage
 	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
@@ -487,6 +522,18 @@ date=short                % Datumsformat
 		\caption{Quadraturpunkte und zugeh\"orige Gewichte}
 		\label{fig:quadraturpunkte}
 	\end{figure}
+
+	\begin{bemerkung}
+		Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann f\"ur Funktionen $f,\omega:\int_{0}^{\infty}f(x)\omega(x)dx<\infty$ wegen \autocite[vgl.][278]{ana2}
+		\begin{align*}
+		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
+		\end{align*}
+		eine neue Funktion $g$ mit $g(x) \coloneqq f(x+a)\omega(x+a)\omega^{-1}(x)$ definiert werden f\"ur die gilt:
+		\begin{align*}
+		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}g(x)\omega(x)dx \approx  \sum_{i=1}^{n}w_ig(x_i).
+		\end{align*}
+		Weiters k\"onnen wegen $\int_{a}^{b}f(x)\omega(x)dx = \int_{a}^{c}f(x)\omega(x)dx - \int_{b}^{c}f(x)\omega(x)dx$ f\"ur $0\leq a\leq b\leq c$ auch Integrale der Form $\int_{a}^{b}f(x)\omega(x)dx$ berechnet werden.
+	\end{bemerkung}
 	
 	\newpage
 	\section{Vergleich der Methoden aus \cref{trapez,gauss}}
@@ -499,87 +546,6 @@ date=short                % Datumsformat
 		\caption{Vergleich der Integrationsmethoden aus \cref{gauss,trapez}}
 		\label{fig:vergleich}	
 	\end{figure}
-
-
-	\subsection{Von T abh\"angiger Fehler}
-	Da f\"ur Funktionen $f,g$, die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
-	\begin{align*}
-		f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx,
-	\end{align*}
-	ergibt sich f\"ur den Fehler $C_1\varepsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktionen $\omega : f(x)\omega(x) \leq f(x)e^{-x}, x \in [T,\infty)$
-	\begin{align*}
-		\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} \geq \\
-		 \abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
-	\end{align*}	
-	Der bei \cref{trapez} durch das Abschneiden des Intervalls $[0,\infty)$ entstehende Fehler ist also stark von der Wahl der Gewichtsfunktion abh\"angig.(\cref{fig:f-vergleich-int}) 
-	Durch die Wahl einer geeigneten Gewichtsfunktion kann die Konvergenz des Integrationsverfahrens also beschleunigt werden.
-	
-	
-	\begin{figure}[H]
-		\begin{subfigure}[t]{0.5\textwidth}
-			
-			\includegraphics[width=\linewidth]{../plots/aufgabe-e-vergleich.png}
-			\subcaption{$f(x)\omega(x)$ f\"ur verschiedene $\omega(x)$}\label{fig:f-vergleich}
-			
-		\end{subfigure}
-		\begin{subfigure}[t]{0.5\textwidth}
-			\includegraphics[width=\linewidth]{../plots/aufgabe-e-vergleich-integral.png}
-			\subcaption{Von T abh\"angiger Fehler f\"ur verschiedene Gewichtsfunktionen}\label{fig:f-vergleich-int}
-		\end{subfigure}
-		\caption{Vergleich verschiedener Gewichtsfunktionen}
-	\end{figure}
-
-	\begin{bemerkung}
-		Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann f\"ur Funktionen $f,\omega:\int_{0}^{\infty}f(x)\omega(x)dx<\infty$ wegen \autocite[vgl.][278]{ana2}
-		\begin{align*}
-			\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
-		\end{align*}
-		eine neue Funktion $g$ mit $g(x) \coloneqq f(x+a)\omega(x+a)\omega^{-1}(x)$ definiert werden f\"ur die gilt:
-		\begin{align*}
-			\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}g(x)\omega(x)dx \approx  \sum_{i=1}^{n}w_ig(x_i).
-		\end{align*}
-		Weiters k\"onnen wegen $\int_{a}^{b}f(x)\omega(x)dx = \int_{a}^{c}f(x)\omega(x)dx - \int_{b}^{c}f(x)\omega(x)dx$ f\"ur $0\leq a\leq b\leq c$ auch Integrale der Form $\int_{a}^{b}f(x)\omega(x)dx$ berechnet werden.
-	\end{bemerkung}
-
-	\subsection{Von n abh\"angiger Fehler}
-	\begin{mytheorem}
-		F\"ur auf einem Intervall $[a,b]:0\leq a< b$ Riemann-integrierbare Funktionen $f,g\in C^2:[a,b]\mapsto \mathbb{R}$ ist der von n abh\"angige Fehler $\tau$ durch
-		\begin{align*}
-				\tau:\mathbb{R}\mapsto\mathbb{R},\tau(f,Z) = \sum_{i=1}^{n(Z)}\left(\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right)
-		\end{align*}
-		gegeben. F\"ur ein Intervall $[u,v]:a\leq u< v\leq b$ und eine Zerlegung $Z$ von $[u,v]$:
-		\begin{align*}
-				|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]\Rightarrow \tau(f,Z)\geq\tau(g,Z).
-		\end{align*}
-	\end{mytheorem}
-	\begin{myproof}
-		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
-		\begin{align*}
-			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
-			 \int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}cdx - d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
-			 \int_{\xi_{i-1}}^{\xi_i}f(x) + cdx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+c+f(\xi_i)+c}{2}\right) = \tau(f+c,\{\xi_{i-1},\xi_i\}).
-		\end{align*}
-		Es kann also $min(f(\xi_{i-1}),f(\xi_{i})) = 0$ vorausgesetzt werden. F\"ur $s(x)\coloneqq f(\xi_{i}) + \frac{f(\xi_{i-1}) - f(\xi_{i})}{\xi_{i-1} - \xi_{i}}x$ gilt weiters:
-		\begin{align*}
-				\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
-				\int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}s(x)dx - d(\xi_{i-1},\xi_i)\frac{s(\xi_{i-1})+s(\xi_i)}{2} - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
-				\int_{\xi_{i-1}}^{\xi_i}f(x) + s(x)dx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+s(\xi_{i-1})+f(\xi_i)+s(\xi_i)}{2}\right) = \tau(f+s,\{\xi_{i-1},\xi_i\})
-		\end{align*} wobei 
-		\begin{align*}
-			\frac{d^2}{dx^2} (f(x) + s(x) + c) = \frac{d^2}{dx^2}f(x) + \frac{d^2}{dx^2}s(x) + \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x)
-		\end{align*}
-		Es existiert also f\"ur jedes $f$  ein  $\hat{f}:\hat{f}(\xi_{i-1}) = \hat{f}(\xi_{i}) = 0,\frac{d^2}{dx^2}\hat{f} = \frac{d^2}{dx^2}f(x),\int\hat{f}(x)dx = \tau(f,\{\xi_{i-1},\xi_i\})$:
-		\begin{align*}
-			\int\int \frac{d^2}{dx^2}f(x)dx = \hat{f}(x) \geq \hat{g}(x) = \int\int \frac{d^2}{dx^2}g(x)dx\\
-			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
-		\end{align*}
-		und somit
-		\begin{align*}
-			\tau(f,Z)\geq\tau(g,Z)
-		\end{align*}
-			
-		\end{myproof}
-	
 	
 	
 	\begin{figure}[H]
