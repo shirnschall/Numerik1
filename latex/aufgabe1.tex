@@ -512,7 +512,7 @@ date=short                % Datumsformat
 		\begin{align*}	
 		p_0(x) &\coloneqq 1\\	
 		p_1(x) &\coloneqq (x-1) p_0 = x-1 \\	
-		p_{n+1}(x) &\coloneqq (x-2n-1)p_n(x)-n p_{n-1}(x) \quad \text{f\"ur}  \quad n\geq 1	
+		p_{n+1}(x) &\coloneqq (x-2n-1)p_n(x)-n^2 p_{n-1}(x) \quad \text{f\"ur}  \quad n\geq 1	
 		\end{align*} 	
 		und 	
 		\begin{align*}	
@@ -525,7 +525,7 @@ date=short                % Datumsformat
 		&		&			&-n+1 		&2n-1				&\\	
 		\end{pmatrix}	
 		\end{align*}	
-		Mit vollständiger Induktion wird gezeigt, dass $T_nv_{k,n} = x_kv_{k,n}$ gilt, mit dem Eigenvektor\\	
+		Mit vollständiger Induktion wird gezeigt, dass $T_nv_{k,n} = x_kv_{k,n}$ gilt, mit dem Eigenvektor 	
 		$v_{k,n} := (\tau_0,\tau_1p_1(x_k),\ldots,\tau_{n-1}p_{n-1}(x_k))^{T}$ und $\tau_j = \frac{(-1)^{j}}{j!}$ zum Eigenwert $x_k$.	
 		\begin{itemize}	
 			\item[I.V.] 	
@@ -537,7 +537,41 @@ date=short                % Datumsformat
 			\end{align*}	
 			Also ist der Eigenwert $x_k = 1$ was bei genauerer Betrachtung auch die Nullstelle des Orthogonalpolynoms $p_1(x_k) = x_k - 1 = 0$ ist. 	
 			\item[I.S.] $n \rightarrow n + 1$	
-			
+			\begin{align*}	 	
+				T_nv_{k,n}
+				& =
+				\begin{pmatrix}	
+					1 		     & 	-1			 	&  				  & &\\	
+					-1		 	 & 3				& 			   	  & & \\	
+					&   		 & \ddots 		    & \ddots 			&\\	
+					&					& \ddots 	&					& -n+1\\	
+					&		&			&-n+1 		&2n-1				&\\	
+				\end{pmatrix}
+				\begin{pmatrix}
+					\tau_0 \\ \tau_1p_1(x_k) \\ \vdots \\ \tau_{n-1}p_{n-1}(x_k)
+				\end{pmatrix} \\
+				& = 
+				\begin{pmatrix}
+				\tau_0 -\tau_1p_1(x_k)  \\ -\tau_0 + 3\tau_1p_1(x_k) - 2\tau_2p_1(x_k)\\ \vdots \\ (-n+1)\tau_{n-2}p_{n-2}(x_k) + (2n-1)\tau_{n-1}p_{n-1}(x_k) 
+				\end{pmatrix} \\
+				& \stackrel{!}{=}
+				x_k	
+				\begin{pmatrix}
+				\tau_0 \\ \tau_1p_1(x_k) \\ \vdots \\ \tau_{n-1}p_{n-1}(x_k)
+				\end{pmatrix}
+			\end{align*}
+			Durch einsetzen der Rekursionsformel für die Orthogonalpolynome $p_n$ auf der linken Seite für die ersten $n-1$ Einträge, folgt direkt die rechte Seite. Für den letzten Eintrag gilt nun
+			\begin{align*}
+				&x_k\tau_{n-1}p_{n-1}(x_k) = (-n+1)\tau_{n-2}p_{n-2}(x_k) + (2n-1)\tau_{n-1}p_{n-1}(x_k) \\
+				\Leftrightarrow &  x_k\tau_{n-1}p_{n-1}(x_k) - (-n+1)\tau_{n-2}p_{n-2}(x_k) - (2n-1)\tau_{n-1}p_{n-1}(x_k) = \\
+				& \tau_{n-1}p_{n-1}(x_k)(x_k-2n+1) + (n-1)\tau_{n-2}p_{n-2}(x_k) = 0
+			\end{align*} 
+			Sei nun o.B.d.A $n$ ungerade und mit Erweiterung des rechten Terms und einsetzen von $\tau_j$ folgt
+			\begin{align*}
+				&\frac{p_{n-1}(x_k)(x_k-2n+1)}{(n-1)!} - \frac{(n-1)^2\tau_{n-2}p_{n-2}(x_k)}{(n-1)!} = 0 \\
+				\Leftrightarrow & p_{n-1}(x_k)(x_k-2(n-1)-1) - (n-1)^2\tau_{n-2}p_{n-2}(x_k) = p_n(x_k) = 0
+			\end{align*}
+			$x_k$ sind also die Nullstellen des Polynoms $p_n$ und sind zugleich die Eigenwerte von $T_n$, wegen $p_n(x) = det(T_n(x))$. \autocite[vgl. 40][]{übung}
 		\end{itemize}
 	\end{myproof}
 	\newpage
