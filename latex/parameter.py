@@ -11,12 +11,12 @@ import matplotlib.pylab as plt
 
 
 def f(x):
-    return np.sin(x)/x*np.exp(-x)
+    return 1/(np.exp(x)+7)*np.exp(-x)
 
 def sumtrapez(t,h):
     xs=np.arange(0,t,h)
     fs=f(xs)
-    return h/2*(1+2*sum(fs[1:-1])+fs[-1]) # 1=f(0) stetig fortgesetzt
+    return h/2*(fs[0]+2*sum(fs[1:-1])+fs[-1]) # 1=f(0) stetig fortgesetzt
 
 n, t = symbols('n,t')
 T = np.arange(1,50)
