@@ -325,7 +325,7 @@ date=short                % Datumsformat
 	\begin{align}
 		|Q_{[0,\infty)}(f) - Q_{h,T}(f)| \le C_1\varepsilon_T + C_2T\varepsilon_h \label{eq:trapez-fehler}
 	\end{align}
-	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Des weiteren wir vorausgesetzt, dass f hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung der Funktion beschränkt ist.
+	wobei die Terme $\varepsilon_T, \varepsilon_h$ lediglich von $T$ bzw. $h$ abhängen und $C_1, C_2$ jeweils von $T,h$ unabhängig sind. Des weiteren wir vorausgesetzt, dass $f$ hinreichend glatt ist und die Supremumsnorm der zweiten Ableitung von $f$ beschränkt ist.
 	\end{mylemma}
 	\begin{myproof}
 		Mit \autocite[vgl.][40-41]{skript}: \\
@@ -385,7 +385,7 @@ date=short                % Datumsformat
 		\caption{Vergleich verschiedener Gewichtsfunktionen}
 	\end{figure}
 
-	Wird $h=\frac{T}{n}$ fix gehalten und $T$ variiert, bleibt f\"ur $T\to \infty$ der von $n$ abh\"angige Fehler \"uber. 
+	Wird $h=\frac{T}{n}$ fixiert, bleibt f\"ur $T\to \infty$ der von $n$ abh\"angige Fehler \"uber. 
 	\lstinputlisting[language=Python, firstline = 4, lastline = 20, caption=Implementierung des Fehlers mit fixem h]{fehlerhsinx.py} 	
 	\begin{figure}[H]
 		\begin{subfigure}[t]{0.5\textwidth}
@@ -412,7 +412,7 @@ date=short                % Datumsformat
 		\end{align*}
 	\end{mytheorem}
 	\begin{myproof}
-		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
+		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ und  $\tau(f,\{\xi_{i-1},\xi_{i},\xi_{i+1}\}) = \tau(f,\{\xi_{i-1},\xi_{i}\}) + \tau(f,\{\xi_{i},\xi_{i+1}\})$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
 		\begin{gather*}
 		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
 		\int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}cdx - d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
@@ -508,7 +508,37 @@ date=short                % Datumsformat
 		wobei $(v_j)_1$ die 1.Komponente eines Eigenvektors $v_j \in \mathbb{R}^{n+1}\setminus \{0\}$ zum Eigenwert $x_j$ ist.
 	\end{mytheorem}
 	\begin{myproof}
-		
+				Durch die Gewichtsfunktion $w(x) = exp(-x)$ haben die Polynome und die Matrix folgende Form:	
+		\begin{align*}	
+		p_0(x) &\coloneqq 1\\	
+		p_1(x) &\coloneqq (x-1) p_0 = x-1 \\	
+		p_{n+1}(x) &\coloneqq (x-2n-1)p_n(x)-n p_{n-1}(x) \quad \text{f\"ur}  \quad n\geq 1	
+		\end{align*} 	
+		und 	
+		\begin{align*}	
+		T_n\coloneqq 	
+		\begin{pmatrix}	
+		1 		     & 	-1			 	&  				  & &\\	
+		-1		 	 & 3				& 			   	  & & \\	
+		&   		 & \ddots 		    & \ddots 			&\\	
+		&					& \ddots 	&					& -n+1\\	
+		&		&			&-n+1 		&2n-1				&\\	
+		\end{pmatrix}	
+		\end{align*}	
+		Mit vollständiger Induktion wird gezeigt, dass $T_nv_{k,n} = x_kv_{k,n}$ gilt, mit dem Eigenvektor\\	
+		$v_{k,n} := (\tau_0,\tau_1p_1(x_k),\ldots,\tau_{n-1}p_{n-1}(x_k))^{T}$ und $\tau_j = \frac{(-1)^{j}}{j!}$ zum Eigenwert $x_k$.	
+		\begin{itemize}	
+			\item[I.V.] 	
+			Es gilt $T_{n-1}v_{k,n-1} = x_kv_{k,n-1}$	
+			\item[I.A.] 	
+			Mit n = 1 folgt unmittelbar	
+			\begin{align*}	
+			T_1v_{k,1} = (1)(\tau_0) = \tau_0 = x_k\tau_0 \Leftrightarrow T_1v_{k,1} - x_k\tau_0 = \tau_0 - x_k\tau_0 = 1 - x_k = 0	
+			\end{align*}	
+			Also ist der Eigenwert $x_k = 1$ was bei genauerer Betrachtung auch die Nullstelle des Orthogonalpolynoms $p_1(x_k) = x_k - 1 = 0$ ist. 	
+			\item[I.S.] $n \rightarrow n + 1$	
+			
+		\end{itemize}
 	\end{myproof}
 	\newpage
 	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
