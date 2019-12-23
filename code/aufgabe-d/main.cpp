@@ -17,6 +17,7 @@ double g(double);
 int main() {
     Gauss Q(N);
     printf("Ergebnis: %.16e\n",Q.result(f));
+    return 0;
 }
 
 double f(double x){

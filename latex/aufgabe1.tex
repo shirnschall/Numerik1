@@ -245,7 +245,7 @@ date=short                % Datumsformat
 
 \newenvironment{myproof}{%      define a custom environment
 	\bigskip\noindent%         create a vertical offset to previous material
-	\textsc{\textbf{\\Beweis}}% or \textbf, \textit, ...
+	\textsc{\textbf{\\Beweis\\}}% or \textbf, \textit, ...
 	\indent
 }{\qed\par\bigskip}  %          create a vertical offset to following material
 
@@ -446,8 +446,8 @@ date=short                % Datumsformat
 	\end{myproof}
 	\newpage
 	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
-	\lstinputlisting[language=c,firstline=17,lastline=20,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
-	\lstinputlisting[language=c,firstline=13,lastline=49,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
+	\lstinputlisting[language=c,firstline=17,lastline=21,label={aufgabed-code-main},caption={M\"ogliche Implementierung von \cref{aufgabec-satz} - main.cpp}]{../code/aufgabe-d/main.cpp}
+	\lstinputlisting[language=c,firstline=14,lastline=50,label={aufgabed-code-gauss},caption={gauss.cpp}]{../code/aufgabe-d/gauss.cpp}
 	
 	\begin{figure}[H]
 		\begin{center}
@@ -470,7 +470,7 @@ date=short                % Datumsformat
 	\end{figure}
 
 
-	\subsection{Beschleunigung der Konvergenz}
+	\subsection{Von T abh\"angiger Fehler}
 	Da f\"ur Funktionen $f,g$, die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
 	\begin{align*}
 		f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx,
@@ -498,17 +498,56 @@ date=short                % Datumsformat
 		\caption{Vergleich verschiedener Gewichtsfunktionen}
 	\end{figure}
 
-\begin{bemerkung}
-	Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann f\"ur Funktionen $f,\omega:\int_{0}^{\infty}f(x)\omega(x)dx<\infty$ wegen \autocite[vgl.][278]{ana2}
-	\begin{align*}
-		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
-	\end{align*}
-	eine neue Funktion $g$ mit $g(x) \coloneqq f(x+a)\omega(x+a)\omega^{-1}(x)$ definiert werden f\"ur die gilt:
-	\begin{align*}
-		\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}g(x)\omega(x)dx \approx  \sum_{i=1}^{n}w_ig(x_i).
-	\end{align*}
-	Weiters k\"onnen wegen $\int_{a}^{b}f(x)\omega(x)dx = \int_{a}^{c}f(x)\omega(x)dx - \int_{b}^{c}f(x)\omega(x)dx$ f\"ur $0\leq a\leq b\leq c$ auch Integrale der Form $\int_{a}^{b}f(x)\omega(x)dx$ berechnet werden.
-\end{bemerkung}
+	\begin{bemerkung}
+		Um, wie in \cref{fig:f-vergleich-int}, mithilfe von \cref{gauss} auch Integrale der Form $\int_{a}^{\infty}f(x)\omega(x)dx:a>0$ zu berechnen kann f\"ur Funktionen $f,\omega:\int_{0}^{\infty}f(x)\omega(x)dx<\infty$ wegen \autocite[vgl.][278]{ana2}
+		\begin{align*}
+			\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)dx = \int_{0}^{\infty}f(x+a)\omega(x+a)\omega^{-1}(x)\omega(x)dx
+		\end{align*}
+		eine neue Funktion $g$ mit $g(x) \coloneqq f(x+a)\omega(x+a)\omega^{-1}(x)$ definiert werden f\"ur die gilt:
+		\begin{align*}
+			\int_{a}^{\infty}f(x)\omega(x)dx = \int_{0}^{\infty}g(x)\omega(x)dx \approx  \sum_{i=1}^{n}w_ig(x_i).
+		\end{align*}
+		Weiters k\"onnen wegen $\int_{a}^{b}f(x)\omega(x)dx = \int_{a}^{c}f(x)\omega(x)dx - \int_{b}^{c}f(x)\omega(x)dx$ f\"ur $0\leq a\leq b\leq c$ auch Integrale der Form $\int_{a}^{b}f(x)\omega(x)dx$ berechnet werden.
+	\end{bemerkung}
+
+	\subsection{Von n abh\"angiger Fehler}
+	\begin{mytheorem}
+		F\"ur auf einem Intervall $[a,b]:0\leq a< b$ Riemann-integrierbare Funktionen $f,g\in C^2:[a,b]\mapsto \mathbb{R}$ ist der von n abh\"angige Fehler $\tau$ durch
+		\begin{align*}
+				\tau:\mathbb{R}\mapsto\mathbb{R},\tau(f,Z) = \sum_{i=1}^{n(Z)}\left(\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right)
+		\end{align*}
+		gegeben. F\"ur ein Intervall $[u,v]:a\leq u< v\leq b$ und eine Zerlegung $Z$ von $[u,v]$:
+		\begin{align*}
+				|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]\Rightarrow \tau(f,Z)\geq\tau(g,Z).
+		\end{align*}
+	\end{mytheorem}
+	\begin{myproof}
+		Da $|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|:x\in [u,v]$ gen\"ugt es ein einzelnes Paar $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
+		\begin{align*}
+			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
+			 \int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}cdx - d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
+			 \int_{\xi_{i-1}}^{\xi_i}f(x) + cdx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+c+f(\xi_i)+c}{2}\right) = \tau(f+c,\{\xi_{i-1},\xi_i\}).
+		\end{align*}
+		Es kann also $min(f(\xi_{i-1}),f(\xi_{i})) = 0$ vorausgesetzt werden. F\"ur $s(x)\coloneqq f(\xi_{i}) + \frac{f(\xi_{i-1}) - f(\xi_{i})}{\xi_{i-1} - \xi_{i}}x$ gilt weiters:
+		\begin{align*}
+				\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
+				\int_{\xi_{i-1}}^{\xi_i}f(x)dx + \int_{\xi_{i-1}}^{\xi_i}s(x)dx - d(\xi_{i-1},\xi_i)\frac{s(\xi_{i-1})+s(\xi_i)}{2} - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
+				\int_{\xi_{i-1}}^{\xi_i}f(x) + s(x)dx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+s(\xi_{i-1})+f(\xi_i)+s(\xi_i)}{2}\right) = \tau(f+s,\{\xi_{i-1},\xi_i\})
+		\end{align*} wobei 
+		\begin{align*}
+			\frac{d^2}{dx^2} (f(x) + s(x) + c) = \frac{d^2}{dx^2}f(x) + \frac{d^2}{dx^2}s(x) + \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x)
+		\end{align*}
+		Es existiert also f\"ur jedes $f$  ein  $\hat{f}:\hat{f}(\xi_{i-1}) = \hat{f}(\xi_{i}) = 0,\frac{d^2}{dx^2}\hat{f} = \frac{d^2}{dx^2}f(x),\int\hat{f}(x)dx = \tau(f,\{\xi_{i-1},\xi_i\})$:
+		\begin{align*}
+			\int\int \frac{d^2}{dx^2}f(x)dx = \hat{f}(x) \geq \hat{g}(x) = \int\int \frac{d^2}{dx^2}g(x)dx\\
+			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
+		\end{align*}
+		und somit
+		\begin{align*}
+			\tau(f,Z)\geq\tau(g,Z)
+		\end{align*}
+			
+		\end{myproof}
 	
 	
 	

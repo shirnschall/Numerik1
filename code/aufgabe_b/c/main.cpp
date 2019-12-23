@@ -5,14 +5,17 @@
 
 
 #define N 200
-#define T 10
+#define T 5
 #define PRECISION 10
 #define INTF atan(1)
-#define INTG (double)1/2*sqrt(4*atan(1))*erf((double)1/2)
-
+#define INTG (double)2*atan(1)*erf((double)1/2)
+#define INTU 0.100146559237255042842031358826979521350464122400515832560306429572817834137774216903720755338989939836188953559757375415594185218468328969224042350631
+#define INTV ((double)1/49)*(7-log(8))
 
 double f(double);
 double g(double);
+double u(double);
+double v(double);
 double sumtrapez(double, double, double fkt(double));
 
 
@@ -24,13 +27,13 @@ int main() {
             double minerror = 10e10;
             double mint = 0;
             for(double j = 1; j<T;j+=.001) {
-                double error = fabs(INTF - sumtrapez(j, i, f));
+                double error = fabs(INTV - sumtrapez(j, i, v));
                 if(error < minerror) {
                     minerror = error;
                     mint=j;
                 }
             }
-            printf("%d\t%.16e\tTrapez\n",i,minerror);
+            printf("%d\t%.16e\texp(-x*x)\n",i,minerror);
             //std::cout << std::setprecision(PRECISION) <<
             //      minerror << '\n';
         }
@@ -51,6 +54,14 @@ double f(double x){
 }
 
 double g(double x){
-    return std::abs(x)>10e-15?((sin(x)/x) * exp(-(x*x))):(double)1;
+    return std::abs(x)>10e-15?(exp(-(x*x))*sin(x)/x):(double)1;
+}
+
+double u(double x){
+    return std::abs(x)>10e-15?(exp(-(x*x))/(exp(x)+7)):(double)1;
+}
+
+double v(double x){
+    return std::abs(x)>10e-15?(exp(-(x))/(exp(x)+7)):(double)1;
 }
 
