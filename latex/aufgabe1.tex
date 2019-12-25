@@ -402,16 +402,17 @@ date=short                % Datumsformat
 	
 	\subsection{Von n abh\"angiger Fehler}
 	\begin{mytheorem}\label{satz:fehler-kruemmung}
-		F\"ur auf einem Intervall $[a,b]:0\leq a< b$ Riemann-integrierbare Funktionen $f,g\in C^2:[a,b]\to \mathbb{R}$ ist der von n abh\"angige Fehler f\"ur  $f$ und eine Zerlegung $Z = \{\xi_{i}:i=0,\dots,n(Z)\}$ von $[a,b]$ durch
+		F\"ur auf einem Intervall $[a,b]:0\leq a< b$ Riemann-integrierbare Funktionen $f,g\in C^2:[a,b]\to \mathbb{R}$ und eine Zerlegung $Z = \{\xi_{i}:i=0,\dots,n(Z)\}$ von $[a,b]$ ist der von n abh\"angige Fehler f\"ur  $f$ durch
 		\begin{align*}
-		\tau:(C^2,2^\mathbb{R})\to\mathbb{R},\tau(f,Z) = \sum_{i=1}^{n(Z)}\left|\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right|
+		\tau:(C^2,2^\mathbb{R})\to\mathbb{R},\tau(f,Z) = \left|\sum_{i=1}^{n(Z)}\left(\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right)\right|
 		\end{align*}
 		gegeben, wobei $d(\xi_{i-1},\xi_{i})$ der Abstand zwischen $\xi_{i-1}$ und $\xi_{i}$ ist. F\"ur ein Intervall $[u,v]:a\leq u< v\leq b$ und eine Zerlegung $Z$ von $[u,v]$ gilt:
 		\begin{align*}
-		\forall x\in (u,v):|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|,|\frac{d^2}{dx^2}g(x)| \neq 0\Rightarrow \tau(f,Z)\geq\tau(g,Z).
+		\forall x\in (u,v):|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|\geq 0\Rightarrow \tau(f,Z)\geq\tau(g,Z).
 		\end{align*}
 	\end{mytheorem}
 	\begin{myproof}
+		Dass $\tau(f,Z)$ der Fehler f\"ur eine der in \cref{satz:fehler-kruemmung} beschriebenen Funktionen $f$ und eine Zerlegung $Z$ ist, folgt direkt aus der Definition der summierten Trapezformel. \\
 		Da $\forall x\in (u,v): |\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|$, gen\"ugt es ein einzelnes Intervall $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
 		\begin{gather*}
 		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
@@ -432,7 +433,7 @@ date=short                % Datumsformat
 		\begin{align*}
 		\frac{d^2}{dx^2}\hat{f}(x) = \frac{d^2}{dx^2} (f(x) - s(x) - c) = \frac{d^2}{dx^2}f(x) - \frac{d^2}{dx^2}s(x) - \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x).
 		\end{align*}
-		Weil au\ss erdem $f,g\in C^2$ und $\forall x \in (u,v):|\frac{d^2}{dx^2}f(x)| \geq |\frac{d^2}{dx^2}g(x)| \geq 0$, kann f\"ur den Fehler wegen $\left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right| = \left|\int_{\xi_{i-1}}^{\xi_i}-\hat{f}(x)dx\right|$ vorausgesetzt werden, dass $\frac{d^2}{dx^2}f(x) \geq \frac{d^2}{dx^2}g(x) \geq 0$ gilt, woraus 
+		Weil au\ss erdem $f,g\in C^2$ und $\forall x \in (u,v):|\frac{d^2}{dx^2}f(x)| \geq |\frac{d^2}{dx^2}g(x)| \geq 0$, kann f\"ur den Fehler wegen $\left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right| = \left|\int_{\xi_{i-1}}^{\xi_i}-\hat{f}(x)dx\right|$ vorausgesetzt werden, dass $\forall x\in (a,b):\frac{d^2}{dx^2}f(x) \geq \frac{d^2}{dx^2}g(x) \geq 0$ gilt, woraus 
 		\begin{align*}
 		\hat{f}(x)  = \int\int \frac{d^2}{dx^2}f(x)d^2x &\geq \int\int \frac{d^2}{dx^2}g(x)d^2x = \hat{g}(x)\\
 		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx&\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
