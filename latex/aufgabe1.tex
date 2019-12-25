@@ -426,15 +426,13 @@ date=short                % Datumsformat
 		\end{gather*} 
 		Es existiert also f\"ur jedes $f$  ein  $\hat{f}$ der Form $\hat{f}(x)=(f(x) - s(x) - c)$, das wie oben gezeigt $\hat{f}(\xi_{i-1}) = \hat{f}(\xi_{i}) = 0$, $\tau(f,Z) = \tau(\hat{f},Z)$ und somit
 		\begin{align*}
-			\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{\hat{f}(\xi_{i-1})+\hat{f}(\xi_i)}{2}\right) = \int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx
+			\tau(f,\{\xi_{i-1},\xi_i\}) = \left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{\hat{f}(\xi_{i-1})+\hat{f}(\xi_i)}{2}\right)\right| = \left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right|
 		\end{align*}
-		erf\"ullt. Da au\ss erdem 
+		erf\"ullt. Weiters ist
 		\begin{align*}
-		\frac{d^2}{dx^2}\hat{f}(x) = \frac{d^2}{dx^2} (f(x) - s(x) - c) = \frac{d^2}{dx^2}f(x) - \frac{d^2}{dx^2}s(x) - \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x)
+		\frac{d^2}{dx^2}\hat{f}(x) = \frac{d^2}{dx^2} (f(x) - s(x) - c) = \frac{d^2}{dx^2}f(x) - \frac{d^2}{dx^2}s(x) - \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x).
 		\end{align*}
-		ist, folgt
-		
-		
+		Weil au\ss erdem $f,g\in C^2$ und $\forall x \in (u,v):|\frac{d^2}{dx^2}f(x)| \geq |\frac{d^2}{dx^2}g(x)| \geq 0$, kann f\"ur den Fehler wegen $\left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right| = \left|\int_{\xi_{i-1}}^{\xi_i}-\hat{f}(x)dx\right|$ vorausgesetzt werden, dass $\frac{d^2}{dx^2}f(x) \geq \frac{d^2}{dx^2}g(x) \geq 0$ gilt, woraus 
 		\begin{align*}
 		\hat{f}(x)  = \int\int \frac{d^2}{dx^2}f(x)d^2x &\geq \int\int \frac{d^2}{dx^2}g(x)d^2x = \hat{g}(x)\\
 		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx&\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
@@ -443,6 +441,7 @@ date=short                % Datumsformat
 		\begin{align*}
 		\tau(f,Z)\geq\tau(g,Z)
 		\end{align*}
+		folgt.
 		
 	\end{myproof}
 
