@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{scrartcl}
 
-\author{Sebastian Hirnschall}
+\author{Sebastian Hirnschall, Rafael Dorigo}
 %% (C) Hirnschall Sebastian 2016 
 \date{\today}
 
@@ -83,7 +83,7 @@ date=short                % Datumsformat
 	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
 	\chead{}
 	\lhead{\leftmark}
-	\lfoot{ Rafael Dorigo, Sebastian Hirnschall}
+	\lfoot{Sebastian Hirnschall, Rafael Dorigo}
 	\cfoot{}
 	\rfoot{\thepage}
 }
@@ -268,7 +268,7 @@ date=short                % Datumsformat
 	%\rhead[re]{\textbf{\nouppercase{\leftmark}}}
 	\chead{}
 	\lhead{\leftmark}
-	\lfoot{ Sebastian Hirnschall}
+	\lfoot{ Sebastian Hirnschall, Rafael Dorigo}
 	\cfoot{}
 	\rfoot{\thepage}
 }
@@ -583,11 +583,38 @@ date=short                % Datumsformat
 			\end{align*} 
 			Sei nun o.B.d.A $n$ ungerade und mit Erweiterung des rechten Terms und einsetzen von $\tau_j$ folgt
 			\begin{align*}
-				&\frac{p_{n-1}(x_k)(x_k-2n+1)}{(n-1)!} - \frac{(n-1)^2\tau_{n-2}p_{n-2}(x_k)}{(n-1)!} = 0 \\
-				\Leftrightarrow & p_{n-1}(x_k)(x_k-2(n-1)-1) - (n-1)^2\tau_{n-2}p_{n-2}(x_k) = p_n(x_k) = 0
+				&\frac{p_{n-1}(x_k)(x_k-2n+1)}{(n-1)!} - \frac{(n-1)^2p_{n-2}(x_k)}{(n-1)!} = 0 \\
+				\Leftrightarrow & p_{n-1}(x_k)(x_k-2(n-1)-1) - (n-1)^2p_{n-2}(x_k) = p_n(x_k) = 0
 			\end{align*}
 			$x_k$ sind also die Nullstellen des Polynoms $p_n$ und sind zugleich die Eigenwerte von $T_n$, wegen $p_n(x) = det(T_n(x))$. \autocite[vgl. 40][]{übung}
 		\end{itemize}
+		Was noch zu  zeigen bleibt, ist dass die Gewichte folgende Form haben
+		\begin{align*}
+			\alpha_j &= \left(\frac{(v_j)_1}{\norm{v_j}_2}\right)^2 \int_{a}^{b} w(x)dx = \frac{((v_j)_1)^2}{(\norm{v_j}_2)^2} \int_{0}^{\infty} e^{-x}dx \\
+			& = \frac{1}{\norm{v_j}_2^2}
+		\end{align*}
+		Bei Betrachtung des Ausdrucks 
+		\begin{align*}
+			\sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l)
+		\end{align*}
+		folgt nun
+		\begin{align*}
+			\sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) &= \sum_{j=0}^{n-1} \tau_j^2 p_j(x_k) \int_{0}^{\infty} p_j(x)e^{-x}dx \\
+			& = \tau_0^2 p_0(x_k) \int_{0}^{\infty} p_0(x)e^{-x}dx + \sum_{j=1}^{n-1} \tau_j^2 p_j(x_k) \int_{0}^{\infty} p_j(x)e^{-x}dx \\
+			& = 1 + \sum_{j=1}^{n-1} \tau_j^2 p_j(x_k) * 0 \\
+			& = 1
+		\end{align*}
+		und andererseits
+		\begin{align*}
+			\sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) 
+			 = \sum_{j=0}^{n-1} w_{k,n} \tau_j^2 p_j(x_k)^2 
+			 = w_{k,n} \sum_{j=0}^{n-1}  \tau_j^2 p_j(x_k)^2
+			 = w_{k,n}\norm{v_{k,n}}_2^2	
+		\end{align*}
+		Also
+		\begin{align*}
+			w_{k,n}\norm{v_{k,n}}_2^2 = 1 \Rightarrow  w_{k,n} = \frac{1}{\norm{v_{k,n}}_2^2}
+		\end{align*}
 	\end{myproof}
 	\newpage
 	Somit ist also die in \Cref{aufgabed-code-main,aufgabed-code-gauss} zu sehende Vorgehensweise gerechtfertigt.
