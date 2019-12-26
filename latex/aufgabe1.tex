@@ -614,9 +614,10 @@ date=short                % Datumsformat
 		und andererseits
 		\begin{align*}
 			\sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) 
+			 &= \sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)^2 \delta_{l,k}
 			 = \sum_{j=0}^{n-1} w_{k,n} \tau_j^2 p_j(x_k)^2 
-			 = w_{k,n} \sum_{j=0}^{n-1}  \tau_j^2 p_j(x_k)^2
-			 = w_{k,n}\norm{v_{k,n}}_2^2	
+			 = w_{k,n} \sum_{j=0}^{n-1}  \tau_j^2 p_j(x_k)^2 \\
+			 &= w_{k,n}\norm{v_{k,n}}_2^2	
 		\end{align*}
 		Also
 		\begin{align*}
