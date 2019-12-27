@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper]{scrartcl}
 
 \author{Sebastian Hirnschall, Rafael Dorigo}
-%% (C) Hirnschall Sebastian 2016 
+%% (C) Hirnschall Sebastian, Rafael 2019
 \date{\today}
 
 
@@ -288,7 +288,9 @@ date=short                % Datumsformat
 		{\huge\bfseries Numerische Integration\par}
 		\vspace{2cm}
 		{\Large\itshape Sebastian Hirnschall\\Rafael Dorigo\par}
-		\vspace{2cm}
+		\vspace{1cm}
+		{\large\itshape Betreut von:\\Markus Wess Dipl.-Ing.\par}
+		\vspace{1cm}
 		\begin{figure}[!h]
 			\vspace{0cm}
 			\centering
@@ -298,7 +300,7 @@ date=short                % Datumsformat
 		\vfill
 		
 		% Bottom of the page
-		{\large \today\par}
+		{\large 24. Dezember 2019\par}
 	\end{titlepage}
 	\restoregeometry
 	
@@ -310,7 +312,7 @@ date=short                % Datumsformat
 	\par\noindent
 	Vordergründiges Ziel dieser Arbeit ist es, exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) numerisch zu integrieren und verschiedene Vorgehensweisen zu vergleichen. Zunächst werden zwei unterschiedliche M\"oglichkeiten um auch das Integral \"uber unbeschr\"ankte Intervalle zu approximieren vorgestellt und untersucht wie sich verschiedener Eigenschaften der zu integrierenden Funktion auf das Konvergenzverhalten des n\"aherungsverfahrens auswirken. %Um problemlos hohe Geschwindigkeiten zu erreichen, verwenden viele Hashfunktionen Bit-Operatoren
 	Anschließend werden die beiden gew\"ahlten Methoden miteinander verglichen.
-	Das letzten Kapitel befassen sich mit der Frage, inwiefern sich das Konvergenzverhalten durch die Wahl unterschiedlicher Gewichtsfunktionen \"andert. Dabei wird verglichen wie schnell der Fehler der zuvor gew\"ahlten Vorgehensweisen f\"ur zwei h\"aufig verwendete Gewichtsfunktionen ($e^{-x}$ und $e^{-x^2}$) gegen $10^{-16}$ konvergieren.. 
+	Das letzten Kapitel befassen sich mit der Frage, inwiefern sich das Konvergenzverhalten durch die Wahl unterschiedlicher Gewichtsfunktionen \"andert. Dabei wird verglichen wie schnell der Fehler der zuvor gew\"ahlten Vorgehensweisen f\"ur zwei h\"aufig verwendete Gewichtsfunktionen ($e^{-x}$ und $e^{-x^2}$) konvergieren.
 	\thispagestyle{firststyle}
 	
 	\newpage
@@ -347,23 +349,14 @@ date=short                % Datumsformat
 			& = C_1\varepsilon_T + C_2T\varepsilon_h 
 		\end{align*}
 	\end{myproof}
-	\begin{mybeispiel}
-		\newpage
-		Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty)$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden, also man ist zum Fehler von T gelangt. Dasselbe passiert auch in \cref{fig:fehlerploth}, wobei die Vergleichsfunktion aus ästhetischen Gründen weggelassen wurde, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Bei verschieden Funktionen ist das einzige was passiert, dass sich der Integrationsfehler ändert und der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt, also der Graph ändert sich nicht.  
-		\begin{bemerkung}
-			Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ erfüllt sein.
-		\end{bemerkung}
-		
-		\begin{figure}[H]
-			\begin{center}
-				\includegraphics[width=0.8\textwidth]{parameterth.png}
-			\end{center}
-			\caption{Fehler abhängig von n.}
-			\label{fig:parameterth}	
-		\end{figure}
-		 
-	\end{mybeispiel}
-	\newpage
+\begin{bemerkung}
+	Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ erfüllt sein.
+\end{bemerkung}
+	%\begin{mybeispiel}
+	%	\newpage
+	%	Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty)$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden, also man ist zum Fehler von T gelangt. Dasselbe passiert auch in \cref{fig:fehlerploth}, wobei die Vergleichsfunktion aus ästhetischen Gründen weggelassen wurde, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Bei verschieden Funktionen ist das einzige was passiert, dass sich der Integrationsfehler ändert und der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt, also der Graph ändert sich nicht.  
+	%\end{mybeispiel}
+	%\newpage
 		\subsection{Von T abh\"angiger Fehler}
 	Da f\"ur Funktionen $f,g$, die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
 	\begin{align*}
@@ -600,7 +593,7 @@ date=short                % Datumsformat
 				&\frac{p_{n-1}(x_k)(x_k-2n+1)}{(n-1)!} - \frac{(n-1)^2p_{n-2}(x_k)}{(n-1)!} = 0 \\
 				\Leftrightarrow & p_{n-1}(x_k)(x_k-2(n-1)-1) - (n-1)^2p_{n-2}(x_k) = p_n(x_k) = 0
 			\end{align*}
-			$x_k$ sind also die Nullstellen des Polynoms $p_n$ und sind zugleich die Eigenwerte von $T_n$, wegen $p_n(x) = det(T_n(x))$. \autocite[vgl. 40][]{übung}
+			$x_k$ sind also die Nullstellen des Polynoms $p_n$ und sind zugleich die Eigenwerte von $T_n$, wegen $p_n(x) = det(T_n(x))$. \autocite[vgl. Bsp. 40]{ubung}
 		\end{itemize}
 		Was noch zu  zeigen bleibt, ist dass die Gewichte folgende Form haben
 		\begin{align*}
