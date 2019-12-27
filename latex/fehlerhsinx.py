@@ -13,7 +13,7 @@ h=0.001
 errors =[]
 T = 2**np.arange(12)
 for t in T:
-    errors.append(abs(0.10042-sumtrapez(t,h)))
+    errors.append(abs(1/49*(7-np.log(8))-sumtrapez(t,h)))
 plt.loglog(T,errors)
 plt.grid(which='major', linewidth=0.5)
 plt.xlabel('T', size='large')

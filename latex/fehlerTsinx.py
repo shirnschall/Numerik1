@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pylab as plt
 
 def f(x):
-    return np.sin(x)/x*np.exp(-x)
+    return 1/(np.exp(x)+7)*np.exp(-x)
 
 def sumtrapez(t,h):
     xs=np.arange(0,t,h)
@@ -13,7 +13,7 @@ T=10
 errors =[]
 hs = 1/2**np.arange(15)
 for h in hs:
-    errors.append(abs(np.pi/4-sumtrapez(T,h)))
+    errors.append(abs(0.10042-sumtrapez(T,h)))
 plt.loglog(hs,errors)
 plt.loglog(hs,hs**2)
 plt.grid(which='major', linewidth=0.5)
