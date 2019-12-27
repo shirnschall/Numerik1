@@ -347,32 +347,29 @@ date=short                % Datumsformat
 			& = C_1\varepsilon_T + C_2T\varepsilon_h 
 		\end{align*}
 	\end{myproof}
-	\begin{mybeispiel}
-		\newpage
-		Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. Das liegt daran, dass wir das Intervall $[0,\infty)$ auf $[0,T]$ beschränken und somit auch bei Verfeinerung von h sich der Fehler nicht mehr ändert, d.h. die maximale Genauigkeit der numerischen Integration ist erreicht worden, also man ist zum Fehler von T gelangt. Dasselbe passiert auch in \cref{fig:fehlerploth}, wobei die Vergleichsfunktion aus ästhetischen Gründen weggelassen wurde, nur dass hier bei einer fixen Schrittweite, sich der Fehler ab einem gewissen T bzw. ab einem gewissem n nicht mehr ändern wird. Um das exakte Integral zu bekommen, müsste man fordern, dass h $\rightarrow $0 und T $\rightarrow \infty$ strebt, da wir aber das Intervall abschneiden und eine Quadraturformel drauf anwenden, ist die nicht möglich, und uns genügt ein minimaler Fehler. Bei verschieden Funktionen ist das einzige was passiert, dass sich der Integrationsfehler ändert und der Punkt an dem der Fehler sich nicht mehr ändert, sich nach links oder rechts verschiebt, also der Graph ändert sich nicht.  
+
 		\begin{bemerkung}
 			Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ erfüllt sein.
 		\end{bemerkung}
+		\newpage
 		
-		\begin{figure}[H]
-			\begin{center}
-				\includegraphics[width=0.8\textwidth]{parameterth.png}
-			\end{center}
-			\caption{Fehler abhängig von n.}
-			\label{fig:parameterth}	
-		\end{figure}
+		%\begin{figure}[H]
+		%	\begin{center}
+		%		\includegraphics[width=0.8\textwidth]{parameterth.png}
+		%	\end{center}
+		%	\caption{Fehler abhängig von n.}
+		%	\label{fig:parameterth}	
+		%\end{figure}
 		 
-	\end{mybeispiel}
-	\newpage
 		\subsection{Von T abh\"angiger Fehler}
 	Da f\"ur Funktionen $f,g$, die auf dem Intervall $[a,b]$ Riemann-integrierbar sind gilt \autocite[vgl.][271]{ana2}: 
 	\begin{align*}
-	f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx,
+		f(x)\leq g(x): x \in [a,b]\Rightarrow \int_{a}^{b}f(x)dx \leq \int_{a}^{b}g(x)dx,
 	\end{align*}
 	ergibt sich f\"ur den Fehler $C_1\varepsilon_T$ aus \cref{eq:trapez-fehler} f\"ur andere Gewichtsfunktionen $\omega : f(x)\omega(x) \leq f(x)e^{-x}, x \in [T,\infty)$
 	\begin{align*}
-	\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} \geq \\
-	\abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
+		\abs{\int_{0}^{\infty}f(x)e^{-x}dx-\int_{0}^{T}f(x)e^{-x}dx} = \abs{\int_{T}^{\infty}f(x)e^{-x}dx} \geq \\
+		\abs{\int_{T}^{\infty}f(x)\omega(x)dx} =  \abs{\int_{0}^{\infty}f(x)\omega(x)dx-\int_{0}^{T}f(x)\omega(x)dx}
 	\end{align*}	
 	Der bei \cref{trapez} durch das Abschneiden des Intervalls $[0,\infty)$ entstehende Fehler ist also stark von der Wahl der Gewichtsfunktion abh\"angig.(\cref{fig:f-vergleich-int}) 
 	Durch die Wahl einer geeigneten Gewichtsfunktion kann die Konvergenz des Integrationsverfahrens also beschleunigt werden.
@@ -406,6 +403,8 @@ date=short                % Datumsformat
 		\caption{Fehler abhängig von T.}
 		\label{fig:fehlerploth}
 	\end{figure}
+
+	Man bemerkt in \cref{fig:fehlerploth}, dass bei verschieden Funktionen sich die Konvergenzgeschwindigkeit des Integrationsfehler ändert. 
 	
 	\subsection{Von n abh\"angiger Fehler}
 	\begin{mytheorem}\label{satz:fehler-kruemmung}
@@ -484,7 +483,7 @@ date=short                % Datumsformat
 		\caption{Fehlerplot abhängig von h.}
 		\label{fig:fehlerplott}
 	\end{figure}
-	
+	Man sieht nun aus \cref{fig:fehlerplott}, wobei die gerade Funktion als Vergleich dient wie sich der Fehler verhalten sollte, dass bei kleiner werdenden h sich der Fehler ab einem gewissen Wert nicht mehr ändert. D.h. man ist zum von T abhängigen Fehler gelangt.   
 	
 	%sebastians teil
 	\newpage
@@ -609,22 +608,22 @@ date=short                % Datumsformat
 		\end{align*}
 		Bei Betrachtung des Ausdrucks 
 		\begin{align*}
-			\sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l)
+			\sum_{j=0}^{n-1} \sum_{l=0}^{j+1} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l)
 		\end{align*}
 		folgt nun
 		\begin{align*}
-			\sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) &= \sum_{j=0}^{n-1} \tau_j^2 p_j(x_k) \int_{0}^{\infty} p_j(x)e^{-x}dx \\
+			\sum_{j=0}^{n-1} \sum_{l=0}^{j+1} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) &= \sum_{j=0}^{n-1} \tau_j^2 p_j(x_k) \int_{0}^{\infty} p_j(x)e^{-x}dx \\
 			& = \tau_0^2 p_0(x_k) \int_{0}^{\infty} p_0(x)e^{-x}dx + \sum_{j=1}^{n-1} \tau_j^2 p_j(x_k) \int_{0}^{\infty} p_j(x)e^{-x}dx \\
-			& = 1 + \sum_{j=1}^{n-1} \tau_j^2 p_j(x_k) * 0 \\
+			& = 1 + \sum_{j=1}^{n-1} \tau_j^2 p_j(x_k) \cdot 0 \\
 			& = 1
 		\end{align*}
 		und andererseits
 		\begin{align*}
-			\sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) 
-			 &= \sum_{j=0}^{n-1} \sum_{l=0}^{n} w_{l,n} \tau_j^2 p_j(x_k)^2 \delta_{l,k}
-			 = \sum_{j=0}^{n-1} w_{k,n} \tau_j^2 p_j(x_k)^2 
-			 = w_{k,n} \sum_{j=0}^{n-1}  \tau_j^2 p_j(x_k)^2 \\
-			 &= w_{k,n}\norm{v_{k,n}}_2^2	
+			\sum_{j=0}^{n-1} \sum_{l=0}^{j+1} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) 
+			 &= \sum_{j=0}^{n-1} \sum_{l=0}^{j+1} w_{l,n} \tau_j^2 p_j(x_k)^2 \delta_{l,k}
+			 = \sum_{j=0}^{n-1} w_{k,n} \tau_j^2 p_j(x_k)^2 \\
+			 &= w_{k,n} \sum_{j=0}^{n-1}  \tau_j^2 p_j(x_k)^2 
+			 = w_{k,n}\norm{v_{k,n}}_2^2	
 		\end{align*}
 		Also
 		\begin{align*}
@@ -681,6 +680,14 @@ date=short                % Datumsformat
 			\subcaption{Trapez vs Gau\ss quadratur}\label{fig:gauss-vs-besseretrapez}
 		\end{subfigure}
 	\caption{\"Anderungen zur Konvergenzbeschleunigung}
+	\end{figure}
+
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Fehlerhvergleich.png}
+		\end{center}
+		\caption{Fehler abhängig von h bei verschiedenen Gewichtsfunktionen}
+		\label{fig:fehlerhverhleich}	
 	\end{figure}
 	%abbildung trapez e^-x vs e^-x^2
 	
