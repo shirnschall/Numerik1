@@ -5,7 +5,7 @@
 
 
 #define N 200
-#define T 5
+#define T 6
 #define PRECISION 10
 #define INTF atan(1)
 #define INTG (double)2*atan(1)*erf((double)1/2)
@@ -22,29 +22,25 @@ double sumtrapez(double, double, double fkt(double));
 int main() {
     std::cout << "Quadraturpunkte\tFehler\tFunktion" << std::endl;
 
+        //printf("%.16e\texp(-x)\n",sumtrapez(6, 100, v));
+        //printf("%.16e\texp(-x*x)\n",sumtrapez(6, 100, u));
         for (int i = 1; i < N + 1; ++i) {
-
-            double minerror = 10e10;
-            double mint = 0;
-            for(double j = 1; j<T;j+=.001) {
-                double error = fabs(INTV - sumtrapez(j, i, v));
-                if(error < minerror) {
-                    minerror = error;
-                    mint=j;
-                }
-            }
-            printf("%d\t%.16e\texp(-x*x)\n",i,minerror);
+            //double error = fabs(INTV - sumtrapez(T, i, v));
+            //printf("%d\t%.16e\tTrapezregel\n",i,error);
+            double error = fabs(INTU - sumtrapez(T, i, u));
+            printf("%d\t%.16e\tTrapezregel\n",i,error);
             //std::cout << std::setprecision(PRECISION) <<
             //      minerror << '\n';
         }
 }
 
 double sumtrapez(double t, double n, double fkt(double)){
-    double sum = fkt(0)/2 + fkt(t)/2;
-    for(int i = 1; i < n; ++i){
-        sum += fkt(i*t/n);
+    double h = t/n;
+    double sum = 0;
+    for(double i = 1; i <= n; ++i){
+        sum += (fkt(i*h)+fkt((i-1)*h))/2*h;
     }
-    return t/n*sum;
+    return sum;
 }
 
 double f(double x){
@@ -58,10 +54,10 @@ double g(double x){
 }
 
 double u(double x){
-    return std::abs(x)>10e-15?(exp(-(x*x))/(exp(x)+7)):(double)1;
+    return (exp(-(x*x))/(exp(x)+7));
 }
 
 double v(double x){
-    return std::abs(x)>10e-15?(exp(-(x))/(exp(x)+7)):(double)1;
+    return (exp(-(x))/(exp(x)+7));
 }
 

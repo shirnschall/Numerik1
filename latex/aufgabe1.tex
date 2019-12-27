@@ -353,7 +353,11 @@ date=short                % Datumsformat
 		\begin{bemerkung}
 			Damit der Fehler minimal ist, soll $\varepsilon_T \approx T\varepsilon_h$ gelten. Anders angeschrieben soll also $h \approx \sqrt{\frac{12e^{-T}}{T}}$ bzw. $n \approx \sqrt{\frac{T^{3}}{12e^{-T}}}$ erfüllt sein.
 		\end{bemerkung}
-		\newpage
+	Die Summierte Trapezregel kann zum Beispiel wie folgt implementiert werden:
+	\lstinputlisting[language=c,  caption=Summierte Trapezregel]{../code/aufgabe-b/c/summierte-trapezregel.cpp}
+	
+	
+		%\newpage
 		
 		%\begin{figure}[H]
 		%	\begin{center}
@@ -622,8 +626,8 @@ date=short                % Datumsformat
 		und andererseits
 		\begin{align*}
 			\sum_{j=0}^{n-1} \sum_{l=0}^{j+1} w_{l,n} \tau_j^2 p_j(x_k)p_j(x_l) 
-			 &= \sum_{j=0}^{n-1} \sum_{l=0}^{j+1} w_{l,n} \tau_j^2 p_j(x_k)^2 \delta_{l,k}
-			 = \sum_{j=0}^{n-1} w_{k,n} \tau_j^2 p_j(x_k)^2 \\
+			 &= \sum_{j=0}^{n-1} \sum_{l=0}^{j+1} w_{l,n} \tau_j^2 p_j(x_k)^2 \delta_{l,k}= \\
+			 \sum_{j=0}^{n-1} w_{k,n} \tau_j^2 p_j(x_k)^2 
 			 &= w_{k,n} \sum_{j=0}^{n-1}  \tau_j^2 p_j(x_k)^2 
 			 = w_{k,n}\norm{v_{k,n}}_2^2	
 		\end{align*}
@@ -658,44 +662,48 @@ date=short                % Datumsformat
 	\end{bemerkung}
 	
 	\newpage
-	\section{Vergleich der Methoden aus \cref{trapez,gauss}}
+	\section{Vergleich der Methoden aus Abschnitt 2 und 3} %cref geht bei lmark in der kopfzeile nicht
+	
 	%Bei der summierten Trapezformel wurde für jedes n ein optimales T gewählt wie in \cref{fig:parameterth}
-	F\"ur die Funktionen $f:[0,\infty)\mapsto \mathbb{R},f(x)=\frac{1}{e^x+7}$ und $\omega:[0,\infty)\mapsto \mathbb{R},\omega(x)=e^{-x}$, konvergiert die Gauss-Laguerre Quadratur wesentlich schneller gegen $\int_{0}^{\infty}f(x)\omega(x)dx$ als die in \cref{trapez} beschriebene Integrationsmethode.(\cref{fig:vergleich})
-	\begin{figure}[H]
+	%F\"ur die Funktionen $f:[0,\infty)\to \mathbb{R},f(x)=\frac{1}{e^x+7}$ und $\omega:[0,\infty)\mapsto \mathbb{R},\omega(x)=e^{-x}$, konvergiert die Gauss-Laguerre Quadratur wesentlich schneller gegen $\int_{0}^{\infty}f(x)\omega(x)dx$ als die in \cref{trapez} beschriebene Integrationsmethode.(\cref{fig:vergleich})
+	Wie bereits gezeigt, ist das Konvergenzverhalten der Summierten Trapezregel stark von der zu integrierenden Funktion abh\"angig. Um die Konvergenz zu beschleunigen kann entweder eine st\"arker fallende Gewichtsfunktion gew\"ahlt werden, um den von $T$ abh\"angigen Fehler zu verkleinern oder eine schw\"acher gekr\"ummte Funktion, um den von $n$ abh\"angigen Fehler zu minimieren.  
+		\begin{figure}[H]
 		\begin{center}
-			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e2.png}
+			\includegraphics[width=0.8\textwidth]{../plots/aufgabe-e-vergleich-trapez-gewichtsfnkt.png}
 		\end{center}
-		\caption{Vergleich der Integrationsmethoden aus \cref{gauss,trapez}}
-		\label{fig:vergleich}	
+		\caption{Fehler der Summierten Trapezregel f\"ur unterschiedlich stark fallende Gewichtsfunktionen und $f(x)=\frac{1}{e^x+7}$}
+		\label{fig:gewichtsfunktionen-vergleich}	
 	\end{figure}
 	
+
+	Wie in \cref{fig:gewichtsfunktionen-vergleich} zu sehen ist, geht der Fehler f\"ur $e^{-x^2}$ wesentlich schneller gegen Null als bei $e^{-x}$. Trotzdem bleibt die Konvergenz langsamer als bei der in \cref{gauss} beschriebenen Gau\ss -Quadratur (\cref{fig:gauss-vs-trapez}).
+	
 	
 	\begin{figure}[H]
-		\begin{subfigure}[c]{0.5\textwidth}
+		\begin{subfigure}[t]{0.5\textwidth}
 			
-			\includegraphics[width=\linewidth]{../plots/aufgabe-e2.png}
-			\subcaption{Verschiedene Gewichtsfunktionen}\label{fig:gewichtsfunktionen-vergleich}
+			\includegraphics[width=\linewidth]{../plots/vergleich-gauss-trapez-expx.png}
+			\subcaption{$\int_{0}^{\infty}\frac{e^{-x}}{e^x+7}dx$}\label{fig:gauss-vs-trapez-expx}
 			
 		\end{subfigure}
-		\begin{subfigure}[c]{0.5\textwidth}
-			\includegraphics[width=\linewidth]{../plots/aufgabe-e2.png}
-			\subcaption{Trapez vs Gau\ss quadratur}\label{fig:gauss-vs-besseretrapez}
+		\begin{subfigure}[t]{0.5\textwidth}
+			\includegraphics[width=\linewidth]{../plots/vergleich-gauss-trapez-expxx.png}
+			\subcaption{$\int_{0}^{\infty}\frac{e^{-x^2}}{e^x+7}dx$}\label{fig:gauss-vs-trapez-expxx}
 		\end{subfigure}
-	\caption{\"Anderungen zur Konvergenzbeschleunigung}
+	\caption{Vergleich der Integrationsverfahren aus \cref{trapez,gauss} f\"ur verschiedene Gewichtsfunktionen}\label{fig:gauss-vs-trapez}
 	\end{figure}
 
-	\begin{figure}[H]
-		\begin{center}
-			\includegraphics[width=0.8\textwidth]{Fehlerhvergleich.png}
-		\end{center}
-		\caption{Fehler abhängig von h bei verschiedenen Gewichtsfunktionen}
-		\label{fig:fehlerhverhleich}	
-	\end{figure}
+	%\begin{figure}[H]
+	%	\begin{center}
+	%		\includegraphics[width=0.8\textwidth]{Fehlerhvergleich.png}
+	%	\end{center}
+	%	\caption{Fehler abhängig von h bei verschiedenen Gewichtsfunktionen}
+	%	\label{fig:fehlerhverhleich}	
+	%\end{figure}
 	%abbildung trapez e^-x vs e^-x^2
 	
 	%und abbildung trapez e^-x^2 vs gauss
-	Wie in \cref{fig:gewichtsfunktionen-vergleich} zu sehen ist, geht der Fehler f\"ur $e^{-x^2}$ wesentlich schneller gegen Null als bei $e^{-x}$. Trotzdem bleibt die Konvergenz langsamer als bei der in \cref{gauss} beschriebenen Gau\ss -Quadratur (\cref{fig:gauss-vs-besseretrapez}).
-
+	
 
 	%\section{Gauss–Hermite Quadratur?}
 	 % Um auch uneigentliche Integrale von $-\infty$ bis $\infty$ zu berechnen, kann als Gewichtsfunktion $e^{-x^2}$ verwendet werden. Es gilt:
