@@ -441,20 +441,35 @@ date=short                % Datumsformat
 		\begin{align*}
 			\tau(f,\{\xi_{i-1},\xi_i\}) = \left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{\hat{f}(\xi_{i-1})+\hat{f}(\xi_i)}{2}\right)\right| = \left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right|
 		\end{align*}
-		erf\"ullt. Weiters ist
+		erf\"ullt. 
+		Nun folgt aus dem Satz von Rolle die Existenz von $x_{1,2}$ f\"ur die gilt, dass $\hat{f}'(x_1) = \hat{g}'(x_1) = 0$ ist. Weil $\hat{f}'$ und $\hat{g}'$ stetig und streng monoton sind, ist $\hat{f}'([a,b])\cap \hat{g}'([a,b]) = [u,v]$ ein nicht leeres, abgeschlossenes Intervall. \\
+		Sei nun $h(x)\coloneq f(x)-g(x),h'(x)= f'(x)-g'(x)$, dann folgt aus der Surjektivit\"at von $\hat{f}',\hat{g}'$ auf $[u,v]$ die Existenz von $\zeta_1,\zeta_2$, f\"ur die folgendes gilt:
 		\begin{align*}
-		\frac{d^2}{dx^2}\hat{f}(x) = \frac{d^2}{dx^2} (f(x) - s(x) - c) = \frac{d^2}{dx^2}f(x) - \frac{d^2}{dx^2}s(x) - \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x).
+			\hat{f}'(\zeta_1) = u \land \hat{g}'(\zeta_1) \geq u\\
+			\hat{f}'(\zeta_2) = v \land \hat{g}'(\zeta_2) \leq v
 		\end{align*}
-		Weil au\ss erdem $f,g\in C^2$ und $\forall x \in (u,v):|\frac{d^2}{dx^2}f(x)| \geq |\frac{d^2}{dx^2}g(x)| \geq 0$, kann f\"ur den Fehler wegen $\left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right| = \left|\int_{\xi_{i-1}}^{\xi_i}-\hat{f}(x)dx\right|$ vorausgesetzt werden, dass $\forall x\in (a,b):\frac{d^2}{dx^2}f(x) \geq \frac{d^2}{dx^2}g(x) \geq 0$ gilt, woraus 
+		Es ist also entweder $h'(\zeta_1) \leq 0\leq h'(\zeta_2)$ oder $h'(\zeta_1) \geq 0\geq h'(\zeta_2)$. Aus dem Zwischenwertsatz folgt die Existenz eines $\zeta\in [u,v]$ f\"ur die $h'(\zeta) =0$ ist, woraus $\hat{f}'(\zeta) = \hat{g}'(\zeta)$ folgt. 
+		Weiters gilt
 		\begin{align*}
-		\hat{f}(x)  = \int\int \frac{d^2}{dx^2}f(x)d^2x &\geq \int\int \frac{d^2}{dx^2}g(x)d^2x = \hat{g}(x)\\
-		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx&\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})
+		\frac{d^2}{dx^2}\hat{f}(x) = \frac{d^2}{dx^2} (f(x) - s(x) - c) = \frac{d^2}{dx^2}f(x) - \frac{d^2}{dx^2}s(x) - \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x)
 		\end{align*}
-		und somit
-		\begin{align*}
+		und weil au\ss erdem $f,g\in C^2$ und $\forall x \in (u,v):|\frac{d^2}{dx^2}f(x)| \geq |\frac{d^2}{dx^2}g(x)| \geq 0$, kann f\"ur den Fehler wegen $\left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right| = \left|\int_{\xi_{i-1}}^{\xi_i}-\hat{f}(x)dx\right|$ vorausgesetzt werden, dass $\forall x\in [a,b]:\frac{d^2}{dx^2}f(x) \leq \frac{d^2}{dx^2}g(x) \leq 0$ gilt.\\
+		Das Intervall $[a,b]$ kann nun in zwei Intervalle $[a,\zeta],[\zeta,b]$ aufgeteilt werden. Mit dem Mittelwertsatz folgt f\"ur $\tilde{a}\in [a,\zeta]$ und $\tilde{b}\in [\zeta,b]$:
+		\begin{gather*}
+			0\geq h''(x_0) = \frac{\hat{f}'(\zeta)-\hat{g}'(\zeta)-\hat{f}'(\tilde{a})+\hat{g}'(\tilde{a})}{\zeta-\tilde{a}} = \frac{\hat{g}'(\tilde{a})-\hat{f}'(\tilde{a})}{\zeta-\tilde{a}}\\
+			\hat{f}'(\tilde{a})\geq \hat{g}'(\tilde{a})\\
+			0\geq h''(x_0) = \frac{\hat{f}'(\tilde{b})-\hat{g}'(\tilde{b})-\hat{f}'(\zeta)+\hat{g}'(\zeta)}{\tilde{b}-\zeta} = \frac{\hat{f}'(\tilde{b})-\hat{g}'(\tilde{b})}{\zeta-\tilde{b}}\\
+			\hat{g}'(\tilde{b})\geq \hat{f}'(\tilde{b})
+		\end{gather*}
+		Durch erneutes anwenden des Mittelwertsatzes folgt dann $\forall x\in[a,b]:\hat{f}(x)\geq\hat{g}(x)$und somit:
+		
+		
+		
+		 
+		\begin{gather*}
+		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_{i}}\hat{f}(x)dx\geq \int_{\xi_{i-1}}^{\xi_{i}}\hat{g}(x)dx = \tau(g,\{\xi_{i-1},\xi_i\})\\
 		\tau(f,Z)\geq\tau(g,Z)
-		\end{align*}
-		folgt.
+		\end{gather*}
 		
 	\end{myproof}
 
