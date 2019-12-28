@@ -312,7 +312,7 @@ date=short                % Datumsformat
 	\par\noindent
 	Vordergründiges Ziel dieser Arbeit ist es, exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) numerisch zu integrieren und verschiedene Vorgehensweisen zu vergleichen. Zunächst werden zwei unterschiedliche M\"oglichkeiten um auch das Integral \"uber unbeschr\"ankte Intervalle zu approximieren vorgestellt und untersucht wie sich verschiedener Eigenschaften der zu integrierenden Funktion auf das Konvergenzverhalten des n\"aherungsverfahrens auswirken. %Um problemlos hohe Geschwindigkeiten zu erreichen, verwenden viele Hashfunktionen Bit-Operatoren
 	Anschließend werden die beiden gew\"ahlten Methoden miteinander verglichen.
-	Das letzten Kapitel befassen sich mit der Frage, inwiefern sich das Konvergenzverhalten durch die Wahl unterschiedlicher Gewichtsfunktionen \"andert. Dabei wird verglichen wie schnell der Fehler der zuvor gew\"ahlten Vorgehensweisen f\"ur zwei h\"aufig verwendete Gewichtsfunktionen ($e^{-x}$ und $e^{-x^2}$) konvergieren.
+	Das letzte Kapitel befasst sich mit der Frage, inwiefern sich das Konvergenzverhalten durch die Wahl unterschiedlicher Gewichtsfunktionen \"andert. Dabei wird verglichen wie schnell der Fehler der zuvor gew\"ahlten Vorgehensweisen f\"ur zwei h\"aufig verwendete Gewichtsfunktionen ($e^{-x}$ und $e^{-x^2}$) konvergieren.
 	\thispagestyle{firststyle}
 	
 	\newpage
@@ -321,7 +321,7 @@ date=short                % Datumsformat
 	\newpage
 
 	\section{Einleitung}
-	Um exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) zu integrieren, bieten sich zwei Möglichkeiten an. Das Abschneiden des unbeschränkten Intervalls und Anwendung einer Quadraturformel für ein beschränktes Intervall $[0,T]$ für $T > 0$ und die Anwendung einer Gaußquadratur für die Gewichtsfunktion $w(x) = e^{-x}$.
+	Um exponentiell abfallende Funktionen auf dem unbeschränkten Intervall [0,$\infty$) zu integrieren, bieten sich zwei Möglichkeiten an. Das Abschneiden des unbeschränkten Intervalls und Anwendung einer Quadraturformel für ein beschränktes Intervall $[0,T]$ für $T > 0$ und die Anwendung einer Gaußquadratur für die Gewichtsfunktion $w(x) = e^{-x}$ (Gauss–Laguerre Quadratur).
 	
 	\newpage
 	\section{Summierte Trapezformel auf einem endlichen Intervall}\label{trapez}
@@ -567,7 +567,7 @@ date=short                % Datumsformat
 			\item[I.A.] 	
 			Mit n = 1 folgt unmittelbar	
 			\begin{align*}	
-			T_1v_{k,1} = (1)(\tau_0) = \tau_0 = x_k\tau_0 \Leftrightarrow T_1v_{k,1} - x_k\tau_0 = \tau_0 - x_k\tau_0 = 1 - x_k = 0	
+			T_1v_{k,1} = (1)(\tau_0) = \tau_0 \stackrel{!}{=} x_k\tau_0 \Leftrightarrow T_1v_{k,1} - x_k\tau_0 = \tau_0 - x_k\tau_0 = 1 - x_k = 0	
 			\end{align*}	
 			Also ist der Eigenwert $x_k = 1$ was bei genauerer Betrachtung auch die Nullstelle des Orthogonalpolynoms $p_1(x_k) = x_k - 1 = 0$ ist. 	
 			\item[I.S.] $n \rightarrow n + 1$	
