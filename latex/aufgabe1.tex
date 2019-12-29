@@ -429,15 +429,15 @@ date=short                % Datumsformat
 		Dass $\tau(f,Z)$ der Fehler f\"ur eine der in \cref{satz:fehler-kruemmung} beschriebenen Funktionen $f$ und eine Zerlegung $Z$ ist, folgt direkt aus der Definition der summierten Trapezformel. \\
 		Da $\forall x\in [a,b]: |\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|$, gen\"ugt es ein einzelnes Intervall $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
 		\begin{gather*}
-		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
-		\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \int_{\xi_{i-1}}^{\xi_i}cdx + d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
-		\int_{\xi_{i-1}}^{\xi_i}f(x) - cdx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})-c+f(\xi_i)-c}{2}\right) = \tau(f-c,\{\xi_{i-1},\xi_i\}).
+		\tau(f,\{\xi_{i-1},\xi_i\}) = \left|\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right| =\\
+		\left|\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \int_{\xi_{i-1}}^{\xi_i}cdx + d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right| = \\
+		\left|\int_{\xi_{i-1}}^{\xi_i}f(x) - cdx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})-c+f(\xi_i)-c}{2}\right)\right| = \tau(f-c,\{\xi_{i-1},\xi_i\}).
 		\end{gather*}
 		Es kann also $min(|f(\xi_{i-1})|,|f(\xi_{i})|) = 0$ vorausgesetzt werden. F\"ur die Verbindungsgerade $s(x)\coloneqq f(\xi_{i-1}) + \frac{f(\xi_{i}) - f(\xi_{i-1})}{\xi_{i} - \xi_{i-1}}x$ der Punkte $(\xi_{i-1},f(\xi_{i-1}))$ und $(\xi_{i},f(\xi_{i}))$ gilt somit $min(|s(\xi_{i-1})|, |s(\xi_{i})|) = 0$ und:
 		\begin{gather*}
-		\tau(f,\{\xi_{i-1},\xi_i\}) =\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
-		\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \int_{\xi_{i-1}}^{\xi_i}s(x)dx + d(\xi_{i-1},\xi_i)\frac{s(\xi_{i-1})+s(\xi_i)}{2} - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
-		\int_{\xi_{i-1}}^{\xi_i}f(x) - s(x)dx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})-s(\xi_{i-1})+f(\xi_i)-s(\xi_i)}{2}\right) = \tau(f-s,\{\xi_{i-1},\xi_i\})
+		\tau(f,\{\xi_{i-1},\xi_i\}) =\left|\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right| =\\
+		\left|\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \int_{\xi_{i-1}}^{\xi_i}s(x)dx + d(\xi_{i-1},\xi_i)\frac{s(\xi_{i-1})+s(\xi_i)}{2} - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right| = \\
+		\left|\int_{\xi_{i-1}}^{\xi_i}f(x) - s(x)dx  - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})-s(\xi_{i-1})+f(\xi_i)-s(\xi_i)}{2}\right)\right| = \tau(f-s,\{\xi_{i-1},\xi_i\})
 		\end{gather*} 
 		Es existiert also f\"ur jedes $f$  ein  $\hat{f}$ der Form $\hat{f}(x)=(f(x) - s(x) - c)$, das wie oben gezeigt $\hat{f}(\xi_{i-1}) = \hat{f}(\xi_{i}) = 0$, $\tau(f,Z) = \tau(\hat{f},Z)$ und somit
 		\begin{align*}
