@@ -420,14 +420,14 @@ date=short                % Datumsformat
 		\begin{align*}
 		\tau:(C^2([a,b]),M)\to\mathbb{R},\tau(f,Z) = \left|\sum_{i=1}^{n(Z)}\left(\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right)\right)\right|
 		\end{align*}
-		gegeben, wobei $d(\xi_{i-1},\xi_{i})$ der Abstand zwischen $\xi_{i-1}$ und $\xi_{i}$ ist und $M$ die Menge der Zerlegungen von $[a,b]$ ist. F\"ur ein Intervall $[u,v]:a\leq u< v\leq b$ und eine Zerlegung $Z$ von $[u,v]$ gilt:
+		gegeben, wobei $d(\xi_{i-1},\xi_{i})$ der Abstand zwischen $\xi_{i-1}$ und $\xi_{i}$ ist und $M$ die Menge der Zerlegungen von $[a,b]$ ist und es gilt:
 		\begin{align*}
-		\forall x\in (u,v):|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|\geq 0\Rightarrow \tau(f,Z)\geq\tau(g,Z).
+		\forall x\in [a,b]:|\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|\geq 0\Rightarrow \tau(f,Z)\geq\tau(g,Z).
 		\end{align*}
 	\end{mytheorem}
 	\begin{myproof}
 		Dass $\tau(f,Z)$ der Fehler f\"ur eine der in \cref{satz:fehler-kruemmung} beschriebenen Funktionen $f$ und eine Zerlegung $Z$ ist, folgt direkt aus der Definition der summierten Trapezformel. \\
-		Da $\forall x\in (u,v): |\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|$, gen\"ugt es ein einzelnes Intervall $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
+		Da $\forall x\in [a,b]: |\frac{d^2}{dx^2}f(x)|\geq |\frac{d^2}{dx^2}g(x)|$, gen\"ugt es ein einzelnes Intervall $(\xi_{i-1},\xi_i)$ zu betrachten. F\"ur $c\in\mathbb{R}$ gilt 
 		\begin{gather*}
 		\tau(f,\{\xi_{i-1},\xi_i\}) = \int_{\xi_{i-1}}^{\xi_i}f(x)dx - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) =\\
 		\int_{\xi_{i-1}}^{\xi_i}f(x)dx - \int_{\xi_{i-1}}^{\xi_i}cdx + d(\xi_{i-1},\xi_i)c - \left(d(\xi_{i-1},\xi_i)\frac{f(\xi_{i-1})+f(\xi_i)}{2}\right) = \\
@@ -447,14 +447,14 @@ date=short                % Datumsformat
 		\begin{align*}
 		\frac{d^2}{dx^2}\hat{f}(x) = \frac{d^2}{dx^2} (f(x) - s(x) - c) = \frac{d^2}{dx^2}f(x) - \frac{d^2}{dx^2}s(x) - \frac{d^2}{dx^2}c= \frac{d^2}{dx^2}f(x)
 		\end{align*}
-		und weil au\ss erdem $f,g\in C^2$ und $\forall x \in (u,v):|\frac{d^2}{dx^2}f(x)| \geq |\frac{d^2}{dx^2}g(x)| \geq 0$, kann f\"ur den Fehler wegen $\left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right| = \left|\int_{\xi_{i-1}}^{\xi_i}-\hat{f}(x)dx\right|$ vorausgesetzt werden, dass $\forall x\in [a,b]:\frac{d^2}{dx^2}f(x) \leq \frac{d^2}{dx^2}g(x) \leq 0$ gilt.\\
+		und weil au\ss erdem $f,g\in C^2([a,b])$ und $\forall x \in [a,b]:|\frac{d^2}{dx^2}f(x)| \geq |\frac{d^2}{dx^2}g(x)| \geq 0$, kann f\"ur den Fehler wegen $\left|\int_{\xi_{i-1}}^{\xi_i}\hat{f}(x)dx\right| = \left|\int_{\xi_{i-1}}^{\xi_i}-\hat{f}(x)dx\right|$ vorausgesetzt werden, dass $\forall x\in [a,b]:\frac{d^2}{dx^2}f(x) \leq \frac{d^2}{dx^2}g(x) \leq 0$ gilt.\\
 		Nun folgt aus dem Satz von Rolle die Existenz von $x_{1,2}$ f\"ur die gilt, dass $\hat{f}'(x_1) = \hat{g}'(x_2) = 0$ ist. Weil $\hat{f}'$ und $\hat{g}'$ stetig und streng monoton sind und $[a,b]$ kompakt ist, ist $\hat{f}'([a,b])\cap \hat{g}'([a,b]) = [u,v]$ ein nicht leeres, abgeschlossenes Intervall. \\
 		Sei nun $h(x)\coloneqq f(x)-g(x),h'(x)= f'(x)-g'(x)$, dann folgt aus der Surjektivit\"at von $\hat{f}',\hat{g}'$ auf $[u,v]$ die Existenz von $\zeta_1,\zeta_2$, f\"ur die folgendes gilt:
 		\begin{align*}
 			\hat{f}'(\zeta_1) = u \land \hat{g}'(\zeta_1) \geq u\\
 			\hat{f}'(\zeta_2) = v \land \hat{g}'(\zeta_2) \leq v
 		\end{align*}
-		Es ist also entweder $h'(\zeta_1) \leq 0\leq h'(\zeta_2)$ oder $h'(\zeta_1) \geq 0\geq h'(\zeta_2)$. Aus dem Zwischenwertsatz folgt die Existenz eines $\zeta\in [u,v]$ f\"ur die $h'(\zeta) =0$ ist, woraus $\hat{f}'(\zeta) = \hat{g}'(\zeta)$ folgt. 
+		Es ist also entweder $h'(\zeta_1) \leq 0\leq h'(\zeta_2)$ oder $h'(\zeta_1) \geq 0\geq h'(\zeta_2)$. Aus dem Zwischenwertsatz folgt die Existenz eines $\zeta\in [u,v]$ f\"ur das $h'(\zeta) =0$ ist, woraus $\hat{f}'(\zeta) = \hat{g}'(\zeta)$ folgt. 
 		
 		Das Intervall $[a,b]$ kann nun in zwei Intervalle $[a,\zeta],[\zeta,b]$ aufgeteilt werden. F\"ur $h''(x) = f''(x)-g''(x)$ folgt dann mit dem Mittelwertsatz f\"ur $\tilde{a}\in [a,\zeta]$ und $\tilde{b}\in [\zeta,b]$:
 		\begin{gather*}
